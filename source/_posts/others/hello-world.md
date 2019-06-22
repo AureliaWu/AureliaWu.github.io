@@ -14,7 +14,7 @@ tags: [others]
 
 ### 元信息
 
-categories和tage都可以有多个
+categories和tags都可以有多个
 
 ```html
     categories: [cat1, cat2]

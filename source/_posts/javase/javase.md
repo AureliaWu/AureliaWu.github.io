@@ -392,3 +392,466 @@ final修饰引用数据类型，地址值不能被改变，但对象中的属性
 
 2. equals方法只能比较引用数据类型，equals方法在没重写之前比较的是地址值，底层依赖的是==号，但是比较地址值是没有意义的，需要重写equals方法比较对象中的属性值
 
+## Scanner、String 类(day 12)
+### Scanner类
+一般方法： 
+hasNextXXX() 判断是否有下一个输入项，XXX可以是Int double等
+nextXxx() 获取下一个输入项，nextLine()用于获取一个String类型的值
+
+nextLine()遇到键盘输入的/r/n时会自动停止，获取键盘输入自动会有/r/n
+
+### String类
+字符串是常量，一旦被赋值就不能被改变
+
+#### 常见构造方法
+1. 空构造 String()
+2. 把字节数组转成字符串 String(byte[] bytes)
+3. 把字节数组的一部分转成字符串 Sting(byte[] bytes, int index, int length)
+4. 把字符数组转成字符串 String(char[] value)
+5. 把字符数组的一部分转成字符串 String(char[] value, int index, int length)
+6. 把字符串常量值转成字符串 String(String original)
+
+#### 常见面试题
+常量池中若无某字符串对象，则创建一个，如有则直接使用
+```java
+String s1 = new String("abc"); // 记录的是堆里面的地址值
+String s2 = "abc";// 记录的是常量池里的地址值
+s1 == s2;// false
+```
+
+#### String类的判断功能
+1. 比较字符串的内容是否相同，区分大小写: equals(Object obj)
+2. 比较字符串的内容是否相同，忽略大小写: equalsIgnoreCase(String str)
+3. 判断大字符串是否包含小字符串: contains(String str)
+4. 判断字符串是否以某个指定的字符串开头: startsWith(String str)
+5. 判断字符串是否以某个指定的字符串结尾: endsWith(String str)
+6. 判断是否为空: isEmpty()
+
+#### String类的获取功能
+1. 获取字符串的长度: int length();
+2. 获取指定索引位置的字符: char charAt(int index)
+3. 返回指定字符在此字符串中第一次出现处的索引: int indexOf(int ch)
+4. 返回指定字符串在此字符串中第一次出现处的索引: int indexOf(String str)
+5. 返回指定字符在此字符串中从指定位置后第一次出现处的索引: int indexOf(int ch, int fromIndex)
+6. 返回指定字符串在此字符串中从指定位置后第一次出现处的索引: int indexOf(String str, int fromIndex)
+7. 从后向前找，第一次出现指定字符的索引: lastIndexOf
+8. 从指定位置开始截取字符串，默认到末尾 String substring(int start) (substring会产生新的字符串)
+9. 从指定位置开始到指定位置结束截取字符串 String substring(int start, int end)
+
+#### String类的转换功能
+valueOf(Object obj); 将对象转为String
+toLowerCase(): 把字符串转小写(返回新的字符串)
+toUpperCase(): 把字符串转成大写(返回新的字符串)
+concat(String str): 把字符串拼接
+
+# StringBuffer & 数组排序 (Day13)
+## StringBuffer
+### 构造方法
+1. 无参构造方法 
+
+```java
+StringBuffer sb = new StringBuffer();
+sb.length();// 0,容器中字符的个数，实际值
+sb.capacity();// 16,容器的初始容量，理论值
+```
+2. 指定容量
+
+```java 
+StringBuffer sb2 = new StringBuffer(10);
+sb2.length();// 0
+ab2.capacity();// 10
+```
+
+3. 指定字符串
+
+```java
+StringBuffer sb3 = new StringBuffer("test");
+sb3.length();// 5, 实际字符个数
+sb3.capacity();// 20, 字符串的length + 初始容量
+```
+
+### 添加功能
+StringBuffer是字符串缓冲区，当new的时候，是在堆内存创建一个对象，底层是一个长度为16的字符数组，当调用添加方法时，不会再重新创建对象，在不断向原缓冲区添加字符;
+
+StringBuffer类中重写了toString方法
+
+```java
+/**
+* 可以把任意类型数据添加到字符串缓冲区里面，并返回字符串返回区* 本身
+*/
+public StringBuffer append(String str);
+
+StringBuffer sb = new StringBuffer();
+StringBuffer sb2 = sb.append(true);
+StringBuffer sb3 = sb.append("test");
+StringBuffer sb4 = sb.append(100);
+
+System.out.println(sb.toString());// truetest100
+System.out.println(sb2.toString());// truetest100
+System.out.println(sb3.toString());// truetest100
+System.out.println(sb4.toString());// truetest100
+
+/**
+* 在指定位置把任意类型的数据插入到字符串缓冲区里面，并返回字符* 串缓冲区本身
+* 在指定位置添加元素，如果没有指定位置，则会报指针异常
+*/
+public StringBuffer insert(int offser, String str);
+
+```
+
+### 删除功能
+当缓冲区中无索引时，报字符串越界异常
+
+```java
+/**
+* 删除指定位置的字符，并返回本身
+*/
+public StringBuffer deleteCharAt(int index);
+
+sb,delete(0, sb.length());// 清空缓冲区
+```
+### 替换和反转
+StringBuffer replace(int start, int end, String str);
+
+StringBuffer reverse();
+
+字符串的反转：
+1. 将字符串转换成StringBuffer对象
+    StringBuffer sb = new StringBuffer(Str);
+2. 使用reverse()方法反转
+    sb.reverse();
+3. 将StringBuffer对象转换成String
+    sb.tostring();
+
+### 截取
+String substring(int start);
+String substring(int start, int end);
+
+注： 截取返回值不再是StringBuffer本身，而是String
+
+### StringBuffer和String的转换
+1. String转StringBuffer
+- 通过构造方法
+  StringBuffer sb = new StringBuffer("XXX");
+- 通过append()方法
+  StringBuffer sb2 = new StringBuffer();
+  sb2.append("XXX");
+
+2. StringBuffer转String
+- 通过构造方法
+  StringBuffer sb = new StringBuffer("XXX");
+  String s1 = new String(sb);
+- 通过toString()方法
+  String s2 = sb.toString();
+- 通过substring截取
+  String s3 = sb.substring(0, sb.length());
+
+### String和StringBuffer作为参数传递
+基本数据类型的值传递，不改变其值；
+引用数据类型的值传递，改变其值；
+String类虽然是引用数据类型，但是它作为参数传递时和基本数据类型是一样的，一旦被初始化，就不会被改变
+
+## StringBuilder
+StringBuffer和StringBuilder类中的方法是一样的
+StringBuffer是JDK1.0版本的，线程安全，效率低；
+StringBuilder是JDK1.5版本的，线程不安全，效率高；
+String是一个不可变的字符序列，StringBuffer和StringBuilder是可变的字符序列
+
+## 数组
+### 数组转成字符串
+遍历时用StringBuffer接收，减少创建对象次数。
+```java
+public static String arrayToString(int[] arr) {
+  StringBuffer sb = new StringBuffer();
+  sb.append("[");
+
+  for(int i=0; i<arr.length; i++) {
+    if(i == arr.length - 1) {
+      // 若写成sb.append(arr[i] + ", "), 在运行+的命令时，会在底层创建StringBuffer对象 
+      sb.append(arr[i].append("]"));
+    }else {
+      sb.append(arr[i].append(", "));
+    }
+  }
+  return sb.toString();
+}
+```
+
+### 数组冒泡排序
+冒泡排序： 轻的上浮，沉的下降
+原理： 两个相邻位置比较，如果前面的元素比后面的元素大，就换位置
+代码思路： 使用嵌套循环，外层循环arr.length-1次，内循环arr.length-1-i次
+
+### 选择排序
+选择排序： 用一个索引位置上的元素，依次与其他索引位置上的元素比较，小在前面，大在后面
+
+### 二分查找
+前提： 数组有序
+二分查找： 查找元素对应的索引
+
+### Arrays类的概述和方法使用
+1. 数组转字符串
+    Arrays.toString(arr);
+2. 数组排序
+    Arrays.sort(arr);
+3. 二分查找
+    Arrays.binarySearch(arr);// 此处的arr为已排序数组，若无所查值，返回负的插入点-1 
+
+## Integer和String类型的相互转换
+1. int转String
+ - String.valueof
+ - toString
+ - int值+""
+ - int转换为Integer类，再调用Integer.toString()
+2. String转int
+ - Integer.parseInt(str);// 推荐使用
+
+ 基本数据类型包装类有八种，其中七种都有parseXxx的方法，可以将这七种字符串表现形式转换成基本数据类型；char的包装类Character中没有parseXXX的方法
+
+ ## 自动装箱和拆箱
+ 自动装箱： 把基本数据类型转换成对象
+ Integer i = 100;
+ 自动拆箱： 把对象转换为基本数据类型
+ int z = i + 200;
+ 注： Integer为null时，会出现空指针异常
+
+ ## Integer类相关
+ byte的取值范围为-128~127：
+ - 若在此取值范围内，自动装箱不会新创建对象，而是从常量池中获取
+ - 若超过byte的取值范围，自动装箱会创建新对象
+ ```java
+Integer i1 = 127;
+Integer i2 = 127;
+i1 == i2;// true
+i1.equals(i2);// true
+
+Integer i3 = 128;
+Integer i4 = 128;
+i3 == i4;// false
+i3.equals(i4);// true
+ ```
+
+# 正则表达式(day 14)
+## 正则表达式
+一个用来描述或者匹配一系列符合某个语法规则的字符串的单个字符串
+
+### 字符类
+- `[abc]`: []代表单个字符; 只能输入a、b或c
+- `[^abc]`: 代表除a、b、c以外的所有单个字符
+- `[a-zA-Z]`: a~z或A~Z,两头的字母包括在内
+- `[a-d[m-p]]`: a到d或m到p: `[a-dm-p]` (并集)
+- `[a-z&&[def]]`: d、e或f (交集)
+- `[a-z&&[^bc]]`: a到z，除了b和c: `[ad-z]` (减去)
+- `[a-z&&[^m-p]]`: a到z,而非m到p: `[a-lq-z]` (减去)
+
+### 预定义字符
+- `.` : 任何字符,转义时需要写成`\\.`
+- `\d`: 数字：`[0-9]` (`\`代表转义字符，如果想表示\d的话，需要写成`\\d`)
+- `\D`: 非数字： `[^0-9]`
+- `\s`: 空白字符： `[\t\n\x0B\f\r]`
+- `\S`: 非空白字符： `[^\s]`
+- `\w`: 单词字符: `[a-zA-Z_0-9]`
+- `\W`: 非单词字符: `[^\w]`
+
+### 数量词
+- `X?`: X一次或一次也没有(e.g.: `[abc]?` a、b、c出现1次或1次也没有)
+- `X*`: X, 0次到多次
+- `X+`: X, 1次或多次
+- `X{n}`: X，恰好n次
+- `X{n,}`: X, 至少n次
+- `X{n,m}`: X, 至少n次，但是不超过m次
+
+### 分割功能
+String.split(String regex);根据正则分割
+
+### 分组功能
+```java
+// \\1代表第一组又出现一次，\\2代表第二组又出现一次 (.)表示一个任意字符为一组
+String regex = "(.)\\1(.)\\2";
+
+String s = "我我....我...我.要...要要...学....学学..学.编.编编..编...程.程..程程...";
+// 将所有.替换成空:我我我我要要要学学学学编编编编程程程程
+String s1 = s.replaceAll("\\.+", "");
+// $1代表第一组中的内容，若有两个(),可以用$2
+String s2 = s1.replaceAll("(.)\\1+", "$1");
+```
+
+### Pattern和Matcher
+```java
+Pattern p = Pattern.compile("a*b");// 获取正则表达式
+Mather m = p.matcher("aaaaab");// 获取匹配器
+boolean b = m.matches();// 是否匹配，匹配为true
+// 以上写法等同于： "aaaaab".matches("a*b")
+
+```
+### 获取功能
+- 获取字符串中的手机号码
+
+```java
+String s = "我的手机号码是18988888888，曾用过18987654321，还用过18812345678";
+String regex = "1[3578]\\d{9}";// 手机号码的正则表达式
+Pattern p = Pattern.compile(regex);// 获取正则表达式
+
+//  m.find(),找到与正则相匹配的字符串
+while(m.find()){
+  //  m.group(),获取匹配的字符串
+  System.out.println(m.group());
+}
+
+```
+
+## Math类
+成员方法:
+`abs(int a)` : 取绝对值
+`ceil(double)`: 向上取整，返回double
+`floor(double)`: 向下取整，返回double
+`max(int a, int b)`: 获取两者的最大值
+`pow(double a, double b)`: a为底数，b为指数
+`random()`: 生成[0.0, 1.0)的随机小数
+`round(float a)`: 四舍五入
+`sqrt(double a)`: 开平方
+
+## System类
+System.gc(); // 运行垃圾回收
+System.exit(0);// 非0状态是异常中止，退出jvm
+System.currentTimeMillis();// 获取1970年到当前时间的毫秒值
+
+## BigInteger类
+可以让超过Integer范围内的数据进行运算
+
+## Date类(util包)
+1970年1月1日为UNIX TIME的纪元时间
+```java
+Date d1 = new Date();// 空参构造，代表当前时间
+Date d2 = new Date(0);// 1970年1月1日8点，存在系统时间和本地时间的时差
+d1.getTime();// 通过时间对象获取毫秒值
+```
+
+## SimpleDateFormat类
+DateFormat类的子类，抽象类，不能被实例化。
+``` java
+Date d = new Date();// 获取当前时间
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+sdf.format(d);// 格式化时间
+
+/**
+* 将时间字符串转换成日期对象
+*/
+String str = "2000年08月08日 08:08:08";
+SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+Date d1 = sdf1.parse(str);
+```
+时间毫秒值/1000/60/60/24 得到天数
+
+## Calendar类
+```java
+Calendar c = Calendar.getInstance();
+c.get(Calendar.Year);// 通过字段获取年
+c.get(Calendar.Month);//  通过字段获取月，但月是从0开始
+c.get(Calendar.DAY_OF_MONTH);// 月中的第几天
+c.get(Calendar.DAY_OF_WEEK);// 周中的第几天，周日为第一天，周六为最后一天
+
+c.add(Calendar.Year, -1);// 对指定字段进行向前减或向后加
+c.set(Calendar.Year, 2008);// 修改指定字段
+```
+
+# Day15(Collection)
+## 数组和集合的区别
+- 数组既可以存储基本数据类型又可以存储引用数据类型，基本数据类型存储的是值，引用数据类型存储的是地址值；集合只能存储引用数据类型(对象)，集合中也可以存储基本数据类型，但是在存储的时候会自动装箱变成对象。
+- 数组长度是固定的，不能自动增长；集合的长度是可变的，可以根据元素的增长而增长
+- 元素个数是固定的推荐用数组；元素个数不固定，推荐用集合；遵循此规则节约内存，集合底层是数组，但随着集合的自动增长，会把之前的数组作废掉，产生很多内存垃圾
+
+## 集合继承体系
+
+![集合继承体系](/data/img/javase/集合继承体系图.png)
+
+List集合中，add方法一定返回true,Set集合当存储重复元素时会返回false。
+
+## 集合转数组遍历
+`toArray()`方法，将集合转换成数组
+`containsAll(Collection A)`,判断是否包含集合A
+`retainAll(Collection A)`, 取与集合A的交集
+
+## 迭代器原理
+迭代器是对集合进行遍历，而每一个集合内部的存储结构是不同的，所以每一个集合存和取是不一样的，那么就需要在每一个类中定义hasNext()和next()方法，这样做是可以的，但会使整个集合体系过于臃肿，迭代器是将这样的方法向上抽取出接口，然后在每个类的内部定义自己迭代方法，这样做的好处有而，第一规定了整个集合体系的遍历方式都是hasNext()和next()方法，第二，代码有底层内部实现，使用者不用管怎么实现的，会用即可
+
+## List集合的特有功能
+ 1. `add(int index, E element)` 在指定位置添加元素；当存储时，出现不存在索引时，出现越界异常
+ 2. `remove(int index)` 通过索引删除元素，将被删除的元素返回；删除时不会自动装箱
+ 3. `get(int index)` 通过索引获取元素
+ 4. `set(int index, E element)` 设置指定索引位置的值
+
+ ## 并发修改异常
+ 遍历的同时在增加元素，出发并发修改异常。
+ 解决方法：使用List特有的迭代器ListIterator,可在遍历时添加元素
+
+  ## List三个子类的特点
+  - ArrayList： 底层数据结构是数组，查询快，增删慢，线程不安全，效率高
+  - Vector: 底层数据结构是数组，查询快，增删慢，线程安全，效率低
+  - LinkedList： 底层数据结构是链表，查询慢，增删快，线程不安全，效率高
+
+  综上，查询多时用ArrayList，增删多用LinkedList，如果都多，用ArrayList。
+
+# Day016 (List)
+`contains`方法和`remove`方法，底层依赖的是equals方法
+
+## 栈和队列数据结构
+栈结构： 先进后出(类似纵向管道)
+队列结构：先进先出(类似横向管道)
+
+## 泛型generic
+好处： 
+  1. 提高安全性(将运行期的错误转到编译期)
+  2. 省去强转的麻烦
+
+注意事项：
+  1. 前后的泛型必须一致，或者后面的泛型可以省略不用写(1.7的新特性)
+  2. 泛型不要定义为Object，没有意义
+
+## 泛型通配符
+1. `<?>` 当右边泛型不确定时，左边可以用`?`
+2. `? extends E`  向下限定，E及其子类
+3. `? super E` 向上限定, E及其父类
+
+## 增强for循环(foreach)
+1. 概述： 简化数组和Collection集合的遍历
+2. 格式： 
+      for(元素数据类型 变量: 数组或Collection集合) {
+        使用变量即可，该变量就是元素
+      }
+增强for循环底层依赖的是迭代器Iterator
+
+## 三种迭代的删除
+1. 普通for循环的删除，通过索引删除，索引要用`i--`
+2. 迭代器删除，不能用集合的删除方法，会引发并发修改异常，只能用迭代器自带的remove方法。
+3. 增强for循环，不能删除，只能遍历
+
+## 静态导入(开发中不常用)
+概念： 导入类中的静态方法
+格式： import static 包名···.类名.方法名
+注意事项： 方法必须是静态的，如果有多个同名的静态方法，容易不知道使用谁，如果要使用，必须加前缀
+
+## 可变参数
+概述： 定义方法的时候不知道该定义多少个参数时使用可变参数
+格式： 修饰符 返回值类型 方法名(数据类型... 变量名){}
+注意事项： 
+  - 可变参数其实是一个数组
+  - 如果一个方法有可变参数，并且有多个参数，那么可变参数肯定是最后一个
+
+## Arrays工具类
+`asList`： 数组转换成集合
+```java
+int[] arr = {11,22,33,44,55};
+List<String> list = Arrays.asList(arr);
+```
+注： 
+1. 数组用asList转为集合后，不能增加或减少元素，但是可以用集合的思想操作数组，可以用其它集合方法
+2. 基本数据类型的数组转换成集合，会将整个数组当做一个对象转换；将数组转换成集合，必须是引用数据类型
+
+`toArray`： 将集合转成数组
+若数组的长度 <= 集合的size,转换后的数组长度=集合的size
+若数组长度 > 集合的size,分配数组的长度=指定长度
+
+# Day017(Set)
+Set集合无索引，不可重复，无序(存取不一致)
+## HashSet
