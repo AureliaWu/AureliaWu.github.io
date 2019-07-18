@@ -35,7 +35,7 @@ javascript代码：
 ```
 `v-for`指令除了能遍历数组还能遍历对象，遍历对象时，要写成：
 
-`<p v-for="(value, key) in user"> 值是:{{ value }} --- 键是{{ key }}</p>`
+`<p v-for="(value, key) in user"> 值是:`{{ value }}` --- 键是`{{ key }}`</p>`
 
 除了value和key之外，在第三个位置还有索引。`v-for`指令中，`in`后面可以是普通数组、对象数组、对象、数字，若为数字时，`count in 10`的`count`从1开始
 
@@ -59,7 +59,7 @@ javascript代码：
 
 ### 过滤器调用时的格式
 
-{{ data | 过滤器的名称 }}
+`{{ data | 过滤器的名称 }}`
 
 ### 过滤器的定义语法
 
