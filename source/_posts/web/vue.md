@@ -13,7 +13,7 @@ tags: [web,vue]
 html代码：
 
 ```vue
-  <p v-for="item in list"> {{item}}</p>
+  <p v-for="item in list"> {{ item }}</p>
 
 ```
 javascript代码：
@@ -35,7 +35,7 @@ javascript代码：
 ```
 `v-for`指令除了能遍历数组还能遍历对象，遍历对象时，要写成：
 
-`<p v-for="(value, key) in user"> 值是:{{value}} --- 键是{{key}}</p>`
+`<p v-for="(value, key) in user"> 值是:{{ value }} --- 键是{{ key }}</p>`
 
 除了value和key之外，在第三个位置还有索引。`v-for`指令中，`in`后面可以是普通数组、对象数组、对象、数字，若为数字时，`count in 10`的`count`从1开始
 
