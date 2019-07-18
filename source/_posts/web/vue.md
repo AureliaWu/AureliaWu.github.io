@@ -13,9 +13,7 @@ tags: [web,vue]
 html代码：
 
 ```javascript
-
   <p v-for="item in list"> {{ item }}</p>
-
 ```
 javascript代码：
 
@@ -37,9 +35,7 @@ javascript代码：
 `v-for`指令除了能遍历数组还能遍历对象，遍历对象时，要写成：
 
 ```javascript
-
   <p v-for="(value, key) in user"> 值是:{{ value }} --- 键是{{ key }}</p>
-
 ```
 
 除了value和key之外，在第三个位置还有索引。`v-for`指令中，`in`后面可以是普通数组、对象数组、对象、数字，若为数字时，`count in 10`的`count`从1开始
@@ -260,11 +256,9 @@ Vue.component('myCom1', Vue.extend({
 2. 使用`Vue.component`注册组件
 
 ```javascript
-
 Vue.component('myCom2', {
   template: '<h3>这是用 Vue.extend 创建的组件</h3>'
 });
-
 ```
 
 ### 组件切换
@@ -273,10 +267,6 @@ Vue.component('myCom2', {
 2. 使用 `component` 标签控制组件的切换(Vue内置组件： `component` `template` `transition` `transitionGroup`)
 3. 使用组件切换动画切换
 
-```javascript
-
-
-```
 ### 父子组件传值
 
 #### 父组件向子组件传值(通过属性传值，通过事件绑定`v-on`传递方法)
