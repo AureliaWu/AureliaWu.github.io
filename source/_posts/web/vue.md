@@ -12,7 +12,8 @@ tags: [web,vue]
 
 html代码：
 
-```vue
+```javascript
+
   <p v-for="item in list"> {{ item }}</p>
 
 ```
@@ -35,8 +36,10 @@ javascript代码：
 ```
 `v-for`指令除了能遍历数组还能遍历对象，遍历对象时，要写成：
 
-```vue
+```javascript
+
   <p v-for="(value, key) in user"> 值是:{{ value }} --- 键是{{ key }}</p>
+
 ```
 
 除了value和key之外，在第三个位置还有索引。`v-for`指令中，`in`后面可以是普通数组、对象数组、对象、数字，若为数字时，`count in 10`的`count`从1开始
@@ -61,7 +64,7 @@ javascript代码：
 
 ### 过滤器调用时的格式
 
-``` {{ data | 过滤器的名称 }} ```
+```javascript {{ data | 过滤器的名称 }} ```
 
 ### 过滤器的定义语法
 
@@ -164,9 +167,9 @@ Vue.directive('color-swatch', function (el, binding) {
 
 第二个生命周期函数： `created()`,与`data`和`methods`平级，此时`data`和`methods`已初始化，可以操作`data`中的数据，也可以调用`methods`中的方法
 
-第三个生命周期函数： `beforeMount()`,表示模板已经在内存中编译完成，但尚未把模板输出到页面中。`beforeMount()`执行时，页面中的元素没有被真正替换过来，只是之前写的一些模板字符，如在`beforeMount()`中打印对应页面中的```{{ msg }}```出现的结果是插值表达式```{{ msg }}```，而不是`data`中定义的`msg`的值
+第三个生命周期函数： `beforeMount()`,表示模板已经在内存中编译完成，但尚未把模板输出到页面中。`beforeMount()`执行时，页面中的元素没有被真正替换过来，只是之前写的一些模板字符，如在`beforeMount()`中打印对应页面中的```javascript {{ msg }}```出现的结果是插值表达式```javascript {{ msg }}```，而不是`data`中定义的`msg`的值
 
-第四个生命周期函数: `mounted()`，表示内存中的模板已经挂载到了页面中，用户可以看到渲染好的页面，在`mounted()`中打印对应页面中的`{{ msg }}`不再是差值表达式，而是`data`中定义的`msg`的值；`mounted()`是实例创建期间的最后一个生命周期函数，当执行完`mounted()`就表示实例已经被完全创建好了，此时组件已经脱离了创建阶段，进入运行阶段。如果要通过某些插件操作页面上的DOM节点，最早要在`mounted()`中进行。
+第四个生命周期函数: `mounted()`，表示内存中的模板已经挂载到了页面中，用户可以看到渲染好的页面，在`mounted()`中打印对应页面中的```javascript {{ msg }}```不再是差值表达式，而是`data`中定义的`msg`的值；`mounted()`是实例创建期间的最后一个生命周期函数，当执行完`mounted()`就表示实例已经被完全创建好了，此时组件已经脱离了创建阶段，进入运行阶段。如果要通过某些插件操作页面上的DOM节点，最早要在`mounted()`中进行。
 
 #### 运行期间的生命周期
 
