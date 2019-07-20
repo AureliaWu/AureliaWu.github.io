@@ -284,6 +284,139 @@ Vue.component('myCom2', {
 #### 子组件向父组件传值
 通过事件回传
 
+## webpack(version 3.6)
+
+### webpack-dev-server(自动编译打包工具)
+
+用于实现自动打包编译功能，依赖于webpack，因此安装此工具前即使全局已经装过webpack，在本地项目中也必须安装webpack以保证正常使用。
+
+1. 运行 `npm i webpack-dev-server -D`命令，将此工具安装到项目的本地开发依赖
+2. 安装完毕后，在终端输入`webpack-dev-server`即可使用
+3. `webpack-dev-server`安装在本地项目中，无法把它当成脚本命令，因此在`powershell`命令中无法直接使用，因此要在项目的`package.json`中加入依赖。
+4. `webpack-dev-server`打包生成的`bundle.js`文件并没有存放到实际的物理磁盘中，而是直接托管到电脑的内存中，所以在项目的根目录中找不到这个打包好的`bundle.js`
+
+#### webpack-dev-server常用命令参数
+
+第一种方式（推荐写法）： 在`package.json`中配置
+```javascript
+"scripts" : {
+  "dev" : "webpack-dev-server --open --port 3000 --contentBase src --hot"
+}
+```
+`open`——编译完成后自动打开浏览器
+
+`port`—— 自定义端口
+
+`contentBase` —— 设置托管目录
+
+`hot` —— 打补丁；热部署，实现浏览器的不刷新重载
+
+第二种方式（了解即可）：在`webpack.config.js`中配置
+```javascript
+const webpack = require('webpack');// 启用热更新的第2步
+module.exports = {
+...
+  devServer : {
+    open: true,
+    port: 3000,
+    contBase: 'src',
+    hot: true // 启用热更新的第1步
+  },
+  plugins: [// 配置插件的节点
+    // 启用热更新的第3步
+    new webpack.HotModuleReplacementPlugin()// new一个热更新的模块对象
+  ]
+}
+...
+```
+
+### html-webpack-plugin
+
+在内存中，根据index模板页面生成内存页面
+
+1. 安装`html-webpack-plugin`插件(`npm i html-webpack-plugin -D`)
+2. 在`webpack.config.js`中导入此插件
+```javascript
+// 只要是插件，都需要放到plugins节点中
+const htmlWebpackPlugin = require('html-webpack-plugin');
+module.exports = {
+...
+  plugins: [// 配置插件的节点
+    // 创建一个在内存中生成html页面插件
+    new htmlWebpackPlugin({
+      // 指定模板页面，将来会根据指定页面路径去生成内存中的页面
+      template: path.join(_dirname, './src/index.html'),
+      // 指定生成的页面名称
+      filename: 'index123.html'
+    })
+  ]
+...
+}
+```
+3. `html-webpack-plugin`会自动把打包好的`bundle.js`追加到页面中
+
+### loader(第三方处理器)
+
+webpack默认只能打包处理js类型的文件，不能处理其它非js类型的文件，如果需要处理非js类型的文件，则需要手动安装一些合适的第三方loader加载器。如需要打包处理css文件，需要安装`style-loader`和`css-loader`
+
+1. 安装命令： `npm i style-loader css-loader -D`
+2. 在`webpack.config.js`的`module`节点中配置
+
+```javascript
+...
+module.exports = {
+...
+  module: {// 此节点用于配置所有第三方木块加载器
+    rules: [
+      // 配置处理.css文件第三方loader规则,webpack1.x版本的use中可省略-loader，2.x及以后的版本都不能省略
+      {test: /\.css$/, use: ['style-loader', 'css-loader']}
+    ]
+  }
+  ...
+}
+```
+`webpack`处理第三方文件类型的过程：
+1. 发现这个文件的类型不是js，去配置文件中查找是否有第三方loader规则
+2. 若能找到对应规则，调用对应的loader处理此文件类型
+3. 调用loader时，是从后往前调用(如上述`['style-loader', 'css-loader']`,先调用的是`css-loader`后调用`style-loader`)
+4. 当最后一个loader调用完毕时，会把处理结果直接交给webpack进行打包合并，最终输出到`bundle.js`中
+
+#### 处理less文件的loader
+
+1. 安装`less`: `npm i less`
+2. 安装`less-loader`: `npm i less-loader -D`
+3. 在上述`module.rules`中配置`less-loader`规则： ` {test: /\.less$/, use: ['style-loader', 'css-loader','less-loader']}`
+
+注： less是less-loader内部依赖，因此需要先安装less，但无需将less配置到`webpack.config.js`中
+
+#### 处理scss文件的loader
+`node-sass`是`sass-loader`内部依赖，需要先安装`node-sass`，但无需将`node-sass`配置到`webpack.config.js`中
+
+1. 安装`node-sass`: `cnpm i node-sass -D`(`node-sass`一般都用cnpm安装，npm一般比较难装成功)
+2. 安装`sass-loader`:  `npm i sass-loader -D`
+3. 在`module.rules`中配置`sass-loader`规则：`{test: /\.scss$/, use: ['style-loader', 'css-loader','sass-loader']}`
+
+#### 处理css文件中的url地址的loader
+
+默认情况下webpack无法处理文件中的url地址，无论是图片还是字体库，只要是url地址都处理不了，需要安装`url-loader`
+
+`file-loader`是`url-loader`内部依赖，需要先安装`file-loader`，但无需将`file-loader`配置到`webpack.config.js`中
+
+1. 安装`file-loader`和`url-loader`: `cnpm i url-loader file-loader -D`
+2. 在`module.rules`中配置`url-loader`规则：`{test: /\.jpg|png|gif|bmp|jpeg$/, use: 'url-loader?limit=7631&name=[name].[ext]'}`
+
+注： 配置`url-loader`时，`'url-loader?limit=7631&name=[name].[ext]'`中:
+- `?`后面表示传参数
+- `limit=7631`表示limit给定的图片大小值，单位为kb; 当图片的大小>7631kb时，图片路径会被base64加密，当图片大小<=limit时，则不会被转为base64的字符串
+- `name=[name].[ext]` 表示文件名沿用原始名称，而不用自动生成的hash值
+
+##### 使用`url-loader`处理字体文件
+在`module.rules`中配置`url-loader`规则：`{test: /\.ttf|eot|svg|woff|woff2$/, use: 'url-loader'}`
+
+一般不要把图片文件和字体文件的url-loader配置写一起，而是分成两条规则写。
+
+
+
 ## tips
 
 ### 填充字符串
@@ -299,7 +432,6 @@ ES6中的字符串新方法`String.prototype.padStart(maxLength, filterString= '
 ```javascript
 var m = ((new Date()).getMonth() + 1).toString().padStart(2, '0');
 ```
-
 
 
 参考视频: https://www.bilibili.com/video/av27969216/?p=1
