@@ -101,4 +101,4 @@ Emmet插件： 自动生成Html代码的插件，VSCode自带此插件
 
 参考视频
 
-[^1]: https://www.bilibili.com/video/av57100756?from=search&seid=2646463889570770154 (2019年 HTML+CSS 零基础权威入学宝典【渡一教育】)
+ https://www.bilibili.com/video/av57100756?from=search&seid=2646463889570770154 (2019年 HTML+CSS 零基础权威入学宝典【渡一教育】)
