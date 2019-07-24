@@ -433,5 +433,6 @@ ES6中的字符串新方法`String.prototype.padStart(maxLength, filterString= '
 var m = ((new Date()).getMonth() + 1).toString().padStart(2, '0');
 ```
 
+---
 
 参考视频: https://www.bilibili.com/video/av27969216/?p=1
