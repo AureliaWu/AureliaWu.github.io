@@ -66,6 +66,15 @@ tags: [Database, Oracle]
 
 # Oracle报错记录
 
+## EXP-00011
+
+`EXP-00011: XXX does not exist`
+
+- 报错内容： 表XXX不存在
+- 报错场景： 直接用命令行导出单张表时，执行命令 `exp user/psw file=d:/exp.dmp tables=emp;` 提示表`emp`不存在，而实际查询时此表存在且有数据
+- 报错原因之一：`exp`执行语句多加了一个'`;`' 网上还有记录其它原因，但实际只遇到的是多加了分号，所以暂不记他人的情况
+- 解决方案： 将命令中的分号去掉就好啦
+
 ## ORA-01940
 
 `ORA-01940: cannot drop a user that is currently connected`

@@ -92,7 +92,7 @@ Emmet插件： 自动生成Html代码的插件，VSCode自带此插件
     `lang="cmn-hans"`表示中国大陆官方简体中文，`lang="zh-CN"`已过时。
 
     ```html
-    <html lang=""en>
+    <html lang="en">
     </html>
     ```
 
