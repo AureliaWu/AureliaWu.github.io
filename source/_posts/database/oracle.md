@@ -88,6 +88,18 @@ tags: [Database, Oracle]
   - 删除对应的进程: `alter system kill session 'xx,xx';`
   - 删除对应用户: `drop user xx cascade;`
 
+# Oracle sql语句
+
+## 将查询结果存入新表
+
+`create table 临时表名 as select * from table_name `
+
+  - `select * from table_name`表示得到查询结果的查询语句
+  - 此方法无需先创建表设置字段，而是会将查询结果的字段和字段类型直接赋予新表
+  - 此方法创建的不属于临时表，可以根据需求作为缓存表，用完可以删除
+
+
+
 
 ---
 
