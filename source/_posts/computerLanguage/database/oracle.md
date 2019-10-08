@@ -3,7 +3,7 @@ layout: "post"
 title: "Oracle数据库"
 date: "2019-7-24 13:31:43"
 categories: Database, Oracle
-tags: [Database, Oracle]
+tags: [Computer Language, Database, Oracle]
 ---
 
 # 创建表空间
