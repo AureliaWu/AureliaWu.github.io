@@ -2,8 +2,8 @@
 layout: "post"
 title: "Phaser3"
 date: "2019-6-22 14:47:36"
-categories: [web,vue]
-tags: [Computer Language, web,Phaser3]
+categories: [web,games]
+tags: [Computer Language, web,games,Phaser3]
 ---
 
 ## 什么是Phaser
