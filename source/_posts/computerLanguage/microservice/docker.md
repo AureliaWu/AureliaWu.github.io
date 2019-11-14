@@ -51,4 +51,22 @@ tags: [Computer Language, microservice, Docker]
 2.配置springboot项目
 
 3.配置本地docker的insecure-registries
+
 4.配置maven的setting.xml中server
+
+## 使用docker打包ofbiz项目
+
+不是我打包的，我不知道怎么配置啊。。。o(╥﹏╥)o
+
+直接运行`_docker_depoly`,此名称为自定义，可修改，至于在哪定义的，emmm... ...
+
+![docker打包ofbiz](/data/img/docker/docker_ofbiz.png) 
+
+前人铺路，后人踩坑，于是一运行就有了问题。
+
+// 过几天再更新，emmm...
+
+### 问题集锦
+
+1. 提示用户
+
