@@ -352,6 +352,16 @@ Dart中没有`public` `private` `protected` 等修饰符,若要将属性或方�
 3. 下载配置Flutter SDK
 4. 配置Flutter镜像
 
+    `build.gradle`中將`google()` `jcenter()`注釋掉，換成阿里鏡像地址：
+
+      ```gradle
+      maven{ url 'https://maven.aliyun.com/repository/google' }
+      maven{ url 'https://maven.aliyun.com/repository/jcenter' }
+      maven{url 'http://maven.aliyun.com/nexus/content/groups/public'}
+
+      ```
+
+
 # Flutter (V 1.9.1 2019年9月更新版)
 
 ## 跟随官网开始学(`https://flutter.dev/docs/get-started/codelab`)
@@ -1945,6 +1955,73 @@ Flutter提供了额两种配置路由跳转的方式： 基本路由和命名路
 
 ### TabController
 
+- 在`MaterialApp`的`home`内添加`DefaultTabController()`,设置标签长度`length`
+
+    若不配置`length`,运行时会报错：
+    ```
+      The method '>=' was called on null.
+      ···
+      When the exception was thrown, this was the stack:
+      I/flutter ( 3567): #0      Object.noSuchMethod (dart:core-patch/object_patch.dart:51:5)
+      I/flutter ( 3567): #1      new DefaultTabController (package:flutter/src/material/tab_controller.dart:315:22)
+    ```
+
+- 在`AppBar()`的`bottom`属性中添加`TabBar()`
+
+- 在`body`中设置`TabView()`,定义标签切换对应的页面
+
+  `TabView()`的长度必须与`TabBar()`中的一致，否则报错：
+
+  ```
+    The following assertion was thrown building TabBarView(dirty, dependencies: [_TabControllerScope],
+    I/flutter ( 3567): state: _TabBarViewState#351c0):
+    I/flutter ( 3567): Controller's length property (2) does not match the
+    I/flutter ( 3567): number of tabs (3) present in TabBar's tabs property.
+  ```
+  
+demo示例：
+
+```dart
+MaterialApp(
+  theme: ThemeData(primaryColor: Colors.lime),
+  home: DefaultTabController(
+    length: 2,
+    child: Scaffold(
+      appBar: AppBar(
+        title: Text("data"),
+        bottom: TabBar(
+          tabs: <Widget>[
+            Tab(text: "热门",),
+            Tab(text: "推荐",)
+          ],
+        ),
+      ),
+      body: TabBarView(
+              children: <Widget>[
+                ListView(
+                  children: <Widget>[
+                    ListTile(title: Text("热门标签内容"),),
+                    ListTile(title: Text("热门标签内容"),),
+                    ListTile(title: Text("热门标签内容"),),
+                    ListTile(title: Text("热门标签内容"),),
+                    ListTile(title: Text("热门标签内容"),),
+                  ],
+                ),
+                ListView(
+                  children: <Widget>[
+                    ListTile(title: Text("推荐标签内容"),),
+                    ListTile(title: Text("推荐标签内容"),),
+                    ListTile(title: Text("推荐标签内容"),),
+                    ListTile(title: Text("推荐标签内容"),),
+                    ListTile(title: Text("推荐标签内容"),),
+                  ],
+                ),
+              ],
+            ),
+    ),
+))
+```
+
 ### Divider组件
 
 分割线
@@ -1958,6 +2035,246 @@ Flutter提供了额两种配置路由跳转的方式： 基本路由和命名路
 ### 表单
 
 #### `TextField` 文本框组件
+
+## 第三方库
+
+### flutter_swiper 轮播图
+
+
+## 实践中的踩坑记录
+
+### 更换APP图标及名称
+
+- 更换图标 
+
+  Android & IOS 图标一键生成网站： http://icon.wuruihong.com/
+
+  上传一张原图片后，会自动生成压缩包，下载解压后可以看到Android和IOS两个文件夹
+
+  - 将Android文件夹的内容复制到`项目根目录\android\app\src\main\res`,将原文件夹替换
+
+  - 将IOS文件夹的内容复制到`项目根目录\ios\Runner\Assets.xcassets`下，将原`AppIcon.appiconset`文件夹替换
+
+- 更换APP名称
+
+  - Android名称： 打开`项目根目录\android\app\src\main`文件夹下的`AndroidManifest.xml`文件，修改`android:label`：
+
+    ```xml
+    <application
+        android:name="io.flutter.app.FlutterApplication"
+        android:label="聖巡"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- This keeps the window background of the activity showing
+                 until Flutter renders its first frame. It can be removed if
+                 there is no splash screen (such as the default splash screen
+                 defined in @style/LaunchTheme). -->
+            <meta-data
+                android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
+                android:value="true" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+    ```
+
+  - IOS名称： 打开`项目根目录\ios\Runner`下的`info.plist`文件，修改`dict.String`
+
+    ```xml
+    <dict>
+      <key>CFBundleDevelopmentRegion</key>
+      <string>$(DEVELOPMENT_LANGUAGE)</string>
+      <key>CFBundleExecutable</key>
+      <string>$(EXECUTABLE_NAME)</string>
+      <key>CFBundleIdentifier</key>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+      <key>CFBundleInfoDictionaryVersion</key>
+      <string>6.0</string>
+      <key>CFBundleName</key>
+      <string>聖巡</string>
+      <key>CFBundlePackageType</key>
+      <string>APPL</string>
+      <key>CFBundleShortVersionString</key>
+      <string>$(FLUTTER_BUILD_NAME)</string>
+      <key>CFBundleSignature</key>
+      <string>????</string>
+      <key>CFBundleVersion</key>
+      <string>$(FLUTTER_BUILD_NUMBER)</string>
+      <key>LSRequiresIPhoneOS</key>
+      <true/>
+      <key>UILaunchStoryboardName</key>
+      <string>LaunchScreen</string>
+      <key>UIMainStoryboardFile</key>
+      <string>Main</string>
+      <key>UISupportedInterfaceOrientations</key>
+      <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+      </array>
+      <key>UISupportedInterfaceOrientations~ipad</key>
+      <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+      </array>
+      <key>UIViewControllerBasedStatusBarAppearance</key>
+      <false/>
+    </dict>
+
+    ```
+
+### 命名规范
+
+此命名规范来自Dart官方网站： `https://dart.dev/guides/language/effective-dart/style`
+
+Dart中的命名方式有三种： `UpperCamelCase` 首字母大写(包括第一个字母)的驼峰式、`lowerCamelCase`首字母大写，第一个字母小写的驼峰式、`lowercase_with_underscores`带有下划线的小写字母
+
+1. `Classes, enums, typedefs, and type parameters should capitalize the first letter of each word (including the first word), and use no separators.`
+
+    类名、枚举、`typedefs`(这啥？)、泛型参数采用`UpperCamelCase`
+
+2. `DO name libraries, packages, directories, and source files using lowercase_with_underscores.`
+
+  库名、包名、文件夹名、文件名采用`lowercase_with_underscores`(小写字母+下划线)
+
+3. `DO name import prefixes using lowercase_with_underscores.`
+
+  重命名导入的包时，采用`lowercase_with_underscores`(小写字母+下划线)
+
+4. `DO name other identifiers using lowerCamelCase.`
+
+  命名其他时采用`lowerCamelCase`
+
+5. `PREFER using lowerCamelCase for constant names.`
+
+  最好使用`lowerCamelCase`来命名常量
+
+### 嵌入地图
+
+我为啥一上来就用了个这么虐心的组件？？？o(╥﹏╥)o
+
+#### 高德地图
+
+`amap_base_flutter`插件可以实现定位、简单的地图展示、导航、搜索等功能
+
+Android版：
+
+  - 在`pubspec.yaml`文件中引入依赖，无需添加版本号：
+
+    ```properties
+    dependencies:
+      amap_location:
+
+    ```
+
+  - 至高德地图`https://lbs.amap.com/api/android-sdk/guide/create-project/get-key`注册`API key`
+
+  - 修改 `项目目录/app/build.gradle` 在`android/defaultConfig`节点修改`manifestPlaceholders`,新增百度地图AK配置
+
+    ```properties
+    android {
+      .... 你的代码
+
+      defaultConfig {
+          .....
+          manifestPlaceholders = [
+                  AMAP_KEY : "你的高德地图AK", // 高德地图AK
+          ]
+
+      }
+
+    ```
+
+### Http请求
+
+1. 引入`dio`包
+
+    `dio`是一个强大的`Dart Http`请求库，支持`Restful API`、`FormData`、拦截器、请求取消、Cookie管理、文件上传/下载、超时、自定义适配器等...
+
+    在`pubspec.yaml`文件中添加依赖:
+
+  ```yaml
+      dependencies:
+        dio: ^3.x.x  // 请使用pub上3.0.0分支的最新版本(本人用的是3.0.5)
+  ```
+
+常见报错信息：
+
+- `SocketException: Failed host lookup: 'www.baidu.com' (OS Error: No address associated with hostnam, errno = 7)`
+
+    测试DIO做请求时，写了个方法get百度首页数据，返回此报错，结果发现是手机没联网导致，emmm...
+
+- `Unhandled Exception: DioError [DioErrorType.RESPONSE]: Http status error [400]`
+
+    - 状态为400可能有很多原因，此为碰到的其中之一
+      
+      `post`发送请求时一直没反应，状态为400，后来终于发现是封装方法是出现问题
+      
+      `get`方法： 
+
+      ```dart
+        get(url, {data, options, cancelTocken}) async{
+          Response response;
+          try {
+            response = await dio.get(url, queryParameters: data, options: options, cancelToken: cancelToken);
+            print('get success---------${response.statusCode}');
+            print('get success---------${response.data}');
+      
+          } on DioError catch (e) {
+            print('get error---------$e');
+          }
+          return response.data;
+        }
+      ```
+
+      `post`方法：
+
+        ```dart
+          post(url, {data, options, cancelToken}) async {
+            Response response;
+            try {
+              response = await dio.post(url, data: data, options: options, cancelToken: cancelToken);
+              print('get success---------${response.statusCode}');
+              print('get success---------${response.data}');
+            } on DioError catch (e) {
+              print('get error---------$e');
+            } 
+            return response.data;
+          }
+        ```
+
+        `get`方法中，接收参数的属性是`queryParameters`,`post`方法中，接收参数的属性是`data`,一开始将`post`方法中接收参数的属性写成了`queryParameters`,结果做请求时一直毫无反应，debug进去发现报了`Http status error [400]`的错。坑！
+
+- `DioError [DioErrorType.RESPONSE]: Http status error [415]`
+
+  
+
+  
+
+## 报错集锦
+
+- `* Error running Gradle: ProcessException: Process "D:\vscodework\yardApp\android\gradlew.bat" exited abnormally: Configure project :app`
+
+  八成是被墙了，下载不下来依赖，在环境变量中配置一下两个参数就解决了：
+
+  ```
+    FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+
+    PUB_HOSTED_URL=https://pub.flutter-io.cn
+  ```
+  环境变量配置好后需要重启电脑才能生效
+
 
 
 
