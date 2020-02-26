@@ -1953,6 +1953,18 @@ Flutter提供了额两种配置路由跳转的方式： 基本路由和命名路
 
   设置文本是否居中
 
+- `automaticallyImplyLeading`
+
+  导航栏左侧是否显示自动生成的`leading`图标
+
+  - 
+  
+    /// Controls whether we should try to imply the leading widget if null.
+  ///
+  /// If true and [leading] is null, automatically try to deduce what the leading
+  /// widget should be. If false and [leading] is null, leading space is given to [title].
+  /// If leading widget is not null, this parameter has no effect.
+
 ### TabController
 
 - 在`MaterialApp`的`home`内添加`DefaultTabController()`,设置标签长度`length`

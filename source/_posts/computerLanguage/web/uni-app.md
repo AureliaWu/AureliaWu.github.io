@@ -74,9 +74,105 @@ list: 配置文件路径、图标、名称等
 
 启动模式配置，仅开发期间生效，用户检查传值？
 
-## 页面生命周期
+## 生命周期
 
-生命周期函数： onLoad onShow onHide
+### 应用生命周期
+
+`App.vue`文件中的`onLaunch` `onShow` `onHide` 表示的是整个应用的生命周期，进入应用-->显示应用-->关闭应用
+
+`onLaunch`全局只触发一次，可在此处获取用户操作的场景值，如进入主程序、扫码进入程序...
+
+### 页面生命周期
+
+每个页面自己的生命周期：  `onLoad` `onReady` `onShow` `onHide` 等
+
+`onLoad`： 页面初始化，执行一次
+
+`onShow`: 页面进入执行，进入多次，执行多次
+
+`onReady`: 页面加载完毕，执行一次
+
+`onHide`: 页面离开执行，离开多次，执行多次
+
+`onPullDownRefresh`: 监听用户下拉动作
+
+	- 需要在 `pages.json` 里，找到的当前页面的`pages`节点，并在 `style` 选项中开启 `enablePullDownRefresh`。
+
+	- 当处理完数据刷新后，`uni.stopPullDownRefresh` 可以停止当前页面的下拉刷新。
+
+`onShareAppMessage`: 用户点击右上角分享
+
+### 组件生命周期
+
+写在组件中。
+
+`beforeMount`: 在挂载开始之前被调用
+
+`mounted`: 挂载到实例上之后调用
+
+## 路由跳转
+
+### 跳转至tabbar中配置的页面
+
+`uni.switchTab(OBJECT)`
+
+`OBJECT`参数: 
+
+- `url` 
+
+	需要跳转的 tabBar 页面的路径（需在 pages.json 的 tabBar 字段定义的页面），路径后不能带参数
+
+- `success`  
+
+	接口调用成功的回调函数
+
+- `fail` 
+
+	接口调用失败的回调函数
+
+- `complete`
+
+	接口调用结束的回调函数（调用成功、失败都会执行）
+
+### 跳转至非tabbar中配置的页面
+
+#### navigateTo
+
+`uni.navigateTo(OBJECT)`
+
+不关闭当前页，跳转至新页面。如列表页跳到详情页
+
+`OBJECT`参数： 
+
+- `url`	
+
+	需要跳转的应用内非`tabBar`的页面的路径 , 路径后可以带参数。
+	参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&分隔；
+
+- `animationType`	
+
+	默认值为`pop-in`，表示窗口显示的动画效果
+
+- `animationDuration`
+
+	窗口动画持续时间，单位为ms
+
+- `success`	
+
+	接口调用成功的回调函数	
+
+- `fail`
+
+	接口调用失败的回调函数	
+- `complete`
+
+	接口调用结束的回调函数（调用成功、失败都会执行）
+
+#### redirectTo
+
+`uni.redirectTo(OBJECT)`
+
+关闭当前页面，跳转新页面
 
 ## 模板语法和数据绑定
 
@@ -116,7 +212,8 @@ uni-app中没有什么默认事件，比如submit不会自动提交
 `scroll-view` : 滚动区域
 `swiper` : 轮播区域
 
- 
+## uni-app中的请求
+
 
 ---
 
