@@ -587,7 +587,7 @@ ctx.fillRect(100,100,300,200);
 
 ## 绘制带文本的饼图
 
-[http://blog.aezo.cn/demos/canvas饼状图.html]
+https://garden.aezo.cn/demos/canvas饼状图.html
 
 
 
