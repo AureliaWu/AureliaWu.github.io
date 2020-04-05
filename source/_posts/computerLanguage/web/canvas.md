@@ -567,7 +567,7 @@ ctx.fillRect(100,100,300,200);
 
     - 设置文本大小、字体
 
-- `textBaseLine`
+- `textBaseline`
 
     - 设置基线（垂直对齐方式），基于起始坐标的对齐方式
 
@@ -581,7 +581,16 @@ ctx.fillRect(100,100,300,200);
 
 - `measureText(文本内容)`
 
-    - 获取文本的宽度
+    - 获取文本的宽度对象
+
+    - **若取文本长度则需要xxx.ctx.measureText(xx).width**
+
+## 绘制带文本的饼图
+
+[http://blog.aezo.cn/demos/canvas饼状图.html]
+
+
+
 
 
 
