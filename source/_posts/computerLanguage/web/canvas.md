@@ -145,7 +145,7 @@ ctx.stroke();
 
 绘制不同属性的线条时，需要用`ctx.beginPath();`来开启新路径解决样式覆盖问题
 
-## 绘制三角形
+# 绘制三角形
 
 ```javascript
     ctx.moveTo(200,100);
@@ -191,7 +191,7 @@ ctx.stroke();
 
 **填充时不再使用`ctx.stroke()`而是使用`ctx.fill()`,同样的，填充样式属性用的是`fillStyle`而不是`strokeStyle`**
 
-## 绘制镂空正方形
+# 绘制镂空正方形
 
 ```javascript
     // 顺时针绘制100*100小正方形
@@ -240,11 +240,11 @@ ctx.stroke();
 
 - `lineDashOffset`: 设置虚线偏移量(负值向右偏移)
 
-## 绘制渐变色矩形
+# 绘制渐变色矩形
 
 绘制思路： 绘制点组成线，为每个点上色
 
-## 绘制折线图
+# 绘制折线图
 
 绘制流程： 绘制网格 --> 绘制坐标系 --> 绘制点 --> 连点成线
 
@@ -408,7 +408,7 @@ ctx.stroke();
 
 ```
 
-## 绘制图形
+# 绘制图形
 
 矩形：
 
@@ -449,9 +449,9 @@ ctx.fillRect(100,100,300,200);
 
 ```
 
-## 绘制曲线
+# 绘制曲线
 
-### 弧形
+## 弧形
 
 一个弧度 = 一个半径的长度
 
@@ -464,8 +464,7 @@ ctx.fillRect(100,100,300,200);
     - 绘制方向类型为`boolean`，默认为顺时针
 
     - 此方法绘制的是路径，需要使用描边才能显示
-
-### 扇形
+## 扇形
 
 起始点放在弧线的圆心位置，绘制弧线，闭合路径
 
@@ -481,7 +480,7 @@ ctx.fillRect(100,100,300,200);
 
 起始点若不设置直接闭合，则绘制出的为扇形
 
-### n等分随机颜色的圆
+## n等分随机颜色的圆
 
 ```javascript
     var ctx = document.querySelector('canvas').getContext('2d');
@@ -513,7 +512,7 @@ ctx.fillRect(100,100,300,200);
     }
 ```
 
-### 根据数据绘制饼图
+## 根据数据绘制饼图
 
 ```javascript
     var ctx = document.querySelector('canvas').getContext('2d');
@@ -551,7 +550,7 @@ ctx.fillRect(100,100,300,200);
     }
 
 ```
-## 绘制文本
+# 绘制文本
 
 - `strokeText(文本内容,x坐标,y坐标)`
 
@@ -585,13 +584,89 @@ ctx.fillRect(100,100,300,200);
 
     - **若取文本长度则需要xxx.ctx.measureText(xx).width**
 
-## 绘制带文本的饼图
+# 绘制带文本的饼图
 
 https://garden.aezo.cn/demos/canvas饼状图.html
 
 
+# 绘制图片
+
+绘制图片使用方法`drawImage()`,可传三个参数、五个参数、九个参数
+
+## 绘制思路
+
+1. 加载图片至内存,创建image对象
+
+    ```javascript
+        // 方法1
+        var img = doucment.createElement('img');
+        img.src = 'image/dude.png';
+
+        // 方法2
+        var image = new Image();// Image()为JS提供的内置构造函数
+        img.src = 'image/dude.png';
+    ```
+
+2. 图片加载完成才能执行代码，因此必须写在onload函数里面
+
+    **部分浏览器如果有缓存时，图片可能会在onload函数触发之前就已经加载完毕，第一次加载图片时已经触发了onload事件，含有缓存时不再触发onload事件，为保证兼容性，最好把onload事件写在图片加载之前**
+
+    ```javascript
+        var image = new Image();// Image()为JS提供的内置构造函数
+        image.onload = function() {
+            // 此处实现图片绘制
+        }
+        img.src = 'image/dude.png';
+
+    ```
 
 
+## 三种绘制方法
+
+- 三个参数 `darwImage(img, x, y)`
+
+    - `img` 图片对象、canvas对象、 video对象
+
+    - `x`、`y` 图片绘制的左上角
+
+- 五个参数 `darwImage(img, x, y, w, h)`
+
+    - `img` 图片对象、canvas对象、 video对象
+
+    - `x`、`y` 图片绘制的左上角
+
+    - `w`、`h` 图片绘制尺寸设置，会对图片进行缩放而不是裁剪
+
+- 九个参数 `drawImage(img, x, y, w, h, x1, y1, w1, h1)`
+
+    - `img` 图片对象、canvas对象、 video对象
+
+    - `x`、`y`、`w`、`h` 图片中的一个矩形区域
+
+    - `x1`、`y1`、`w1`、`h1` 画布中的一个矩形区域, `w1`、`h1`是图片的缩放尺寸而不是裁剪
+
+## 帧动画
+
+### 绘制关键思路
+
+1. 动态获取当前图片的尺寸
+
+    ```javascript
+    var imageWidth = image.width;
+    var imageHeight = image.height;
+    ```
+
+2. 计算出每个小人物的尺寸
+
+### 示例
+
+https://garden.aezo.cn/demos/canvas帧动画.html
+
+### 方向键控制精灵行走的帧动画
+
+https://garden.aezo.cn/demos/canvas方向键控制行走动画.html
+
+## 转换
 
 
 
