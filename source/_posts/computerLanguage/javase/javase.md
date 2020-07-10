@@ -855,3 +855,77 @@ List<String> list = Arrays.asList(arr);
 # Day017(Set)
 Set集合无索引，不可重复，无序(存取不一致)
 ## HashSet
+
+# 多线程
+
+## 线程池
+
+使用线程池管理线程好处： 
+
+1. 使用线程池可以重复利用已有的线程继续执行任务，避免线程在创建和销毁时造成的损耗
+
+2. 由于没有线程创建和销毁时的损耗，可以提高系统响应速度
+
+3. 通过线程可以对线程进行合理的管理，根据系统的承受能力调整可运行的线程数量大小
+
+### 线程池工作原理
+
+### 线程池的分类
+
+#### `ThreadPoolExecutor`
+
+  - `newCacheThreadPool`
+
+    构造方法不带线程池容量，最大容量为`Integer.MAX_VALUE`
+
+  - `newFixedThreadPool`
+
+    构造方法中需要设定线程池容量
+
+  - `newSingleThreadPool`
+
+    单个线程
+
+#### `ScheduledThreadPoolExecutor`
+
+  - `newSingleThreadScheduledExecutor`
+
+  - `newScheduledThreadPool`
+
+#### `ForkJoinPool`
+
+  - `newWorkStealingPool`
+
+### 线程池的生命周期
+
+RUNNING --> SHUTDOWN --> TIDYING --> TERMINATED
+
+或：
+
+RUNNING --> STOP --> TIDYING --> TERMINATED
+
+`RUNNING`: 能接受新提交的任务，并能处理阻塞队列中的任务
+
+`SHUTDOWN`: 关闭状态，不再接受新提交的任务，但可以继续处理阻塞队列中以保存的任务
+
+`STOP`: 不能接受新任务也不处理队列中的任务，会中断正在处理任务的线程
+
+`TIDYING`: 如果所有的任务都已经终止了，workerCount(有效线程数)为0，线程池进入该状态后会调用`terminated()`方法进入`TERMINATED`状态
+
+`TERMINATED`: 在`terminated()`方法执行完后进入该状态，默认`terminated()`方法中什么也没有做
+
+### ThreadPoolExecutor参数解析
+
+线程池最终调用的都是`ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue)`方法
+
+- `corePoolSize` 
+
+  核心线程池数量
+
+- `maximumPoolSize`
+
+- `keepAliveTime`
+
+- `unit`
+
+- `workQueue`
