@@ -6,6 +6,23 @@ categories: Database, Oracle
 tags: [Computer Language, Database, Oracle]
 ---
 
+# Oracle的安装
+
+## 数据库和数据仓库
+
+数据库： 对数据进行持久化存储，将数据直接存储到磁盘
+
+- 关系型数据库： 
+
+  - Mysql(最常用)
+
+  - Oracle(最安全)
+
+  - QLserver(.net)
+
+  - Db2(金融、银行)
+
+
 # 创建表空间
 
 1. 登录：sqlplus / as sysdba

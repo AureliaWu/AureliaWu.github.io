@@ -1,4 +1,4 @@
-cd D:/personalFiles/myproject/blog
+cd /Users/aureliawu/personalFiles/privateProjects/blog
 hexo clean
 git add .
 git commit -am "update blog"
