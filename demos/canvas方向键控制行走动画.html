@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>奇天大圣的蟠桃园 - 保持饥饿</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="奇天大圣,"> 
+    <meta name="description" content="记录当下！,"> 
+    <meta name="author" content="Aurelia"> 
+    <link rel="alternative" href="atom.xml" title="奇天大圣的蟠桃园" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+    <link rel="stylesheet" href="/css/diaspora.css">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">奇天大圣的蟠桃园</span>
+    <div id="loader"></div>
+    <div id="single" class="page">
+    <div id="top">
+        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div class="main">
+                <div class="content">
+                
+                        <!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas图片</title>
+</head>
+<body>
+    <canvas width="600px" height="400px"></canvas>
+</body>
+</html>
+<style>
+    canvas {
+        border: 1px solid royalblue;
+    }
+</style>
+<script>
+    // 创建精灵对象
+    var Sprite = function(ctx) {
+        // 绘制工具
+        this.ctx = ctx || document.querySelector('canvas').getContext('2d');
+        this.imageSrc = 'image/dude.png';
+        this.canvasWidth = this.ctx.canvas.width;
+        this.canvasHeight = this.ctx.canvas.height;
+
+        // 行走相关参数
+        this.stepSize = 10;// 默认行走步伐大小
+        this.direction = 0;// 默认行走方向 0 为向左走 
+
+        this.init();
+    }
+
+    // 初始化
+    Sprite.prototype.init = function() {
+        /* 初始化图片
+            1. 加载图片
+            2. 默认绘制在中心位置正面朝外
+            3. 绑定方向键控制行走
+        */
+        var _this = this;
+        this.loadImage(function(image) {
+            // 上述2 3的业务在此处实现
+            // 获取图片大小
+            _this.imageWidth = image.width;
+            _this.imageHeight = image.height;
+
+            // 获取人物的大小
+            _this.spriteWidth = _this.imageWidth / 9;
+            _this.spriteHeight = _this.imageHeight;
+
+            // 定位绘制图片的起点
+            _this.x0 = _this.canvasWidth / 2 - _this.spriteWidth / 2;
+            _this.y0 = _this.canvasHeight / 2 - _this.spriteHeight / 2;
+
+            // 绘制默认图片，中心位置正面朝外
+            // 示例中引用的图片正面朝外为第五个元素
+            _this.ctx.drawImage(image, _this.spriteWidth * 4, 0, _this.spriteWidth, _this.spriteHeight, _this.x0, _this.y0, _this.spriteWidth, _this.spriteHeight);
+
+            // 绑定按键的事件
+            _this.index = 0;
+            document.onkeydown = function(e) {
+                console.log(e.keyCode);
+                // 根据keyCode值判断方向：  37=键盘方向左键 38=键盘方向上键 39=键盘方向右键 40=键盘方向下键
+                if(e.keyCode == 37) {
+                    // 向左走
+                    _this.index++;
+                    _this.drawSprite(image);
+                }else if(e.keyCode == 38) {
+                    // 向上跳
+                    _this.index++;
+                }else if(e.keyCode == 39) {
+                    // 向右走
+                    _this.index++;
+                    _this.drawSprite(image);
+                }else if(e.keyCode == 40) {
+                    // 向下跳
+                    _this.index++;
+                }
+            }
+        });
+    }
+
+    // 加载图片
+    Sprite.prototype.loadImage = function(callback) {
+        var image = new Image();
+        image.onload = function() {
+            callback && callback(image);
+        }
+        image.src = this.imageSrc;
+    }
+
+    // 绘制图片
+    Sprite.prototype.drawSprite = function(image) {
+        // 绘图前需要先清除画布，否则会绘制多次图片会出现重影
+        this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+
+        // 在精灵图上的定位
+        this.ctx.drawImage(image, this.index * this.spriteWidth, this.direction * this.spriteHeight,
+            this.x0, this.y0,
+            this.spriteWidth,this.spriteHeight
+        );
+
+        // 如果索引超出了需要重新开始
+    }
+
+   new Sprite();
+</script>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

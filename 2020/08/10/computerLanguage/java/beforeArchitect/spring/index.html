@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Spring - 奇天大圣的蟠桃园</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="奇天大圣,"> 
+    <meta name="description" content="记录当下！,Spring初识框架什么是框架？某些个人或组织定义了一系列的类或接口，提前定义好一些实现，用户可以在这些类和接口的基础上使用这些类来迅速形成某个领域或者某个行业的解决方案，简化开发过程，提高开发效率,"> 
+    <meta name="author" content="Aurelia"> 
+    <link rel="alternative" href="atom.xml" title="奇天大圣的蟠桃园" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+    <link rel="stylesheet" href="/css/diaspora.css">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">奇天大圣的蟠桃园</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://garden.aezo.cn"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Spring</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Spring</h1>
+        <div class="stuff">
+            <span>八月 10, 2020</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Computer-Language/">Computer Language</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Spring/">Spring</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/framework/">framework</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Spring初识"><a href="#Spring初识" class="headerlink" title="Spring初识"></a>Spring初识</h1><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>什么是框架？某些个人或组织定义了一系列的类或接口，提前定义好一些实现，用户可以在这些类和接口的基础上使用这些类来迅速形成某个领域或者某个行业的解决方案，简化开发过程，提高开发效率。</p>
+<h2 id="软件设计发展历程"><a href="#软件设计发展历程" class="headerlink" title="软件设计发展历程"></a>软件设计发展历程</h2><h3 id="单一应用架构"><a href="#单一应用架构" class="headerlink" title="单一应用架构"></a>单一应用架构</h3><p>当网站流量很小时，只需一个应用，将所有功能都部署在一起以减少部署节点和成本，此时用于简化增删改查工作量的数据访问框架(ORM)是关键。</p>
+<h3 id="垂直应用架构"><a href="#垂直应用架构" class="headerlink" title="垂直应用架构"></a>垂直应用架构</h3><p>当访问量逐渐增大，单一应用增加及其带来的及速度月俩月小，提升效率的方法之一是将应用拆成互不相干的几个应用，以提升效率此时用于加速前端页面开发的Web框架(MVC)是关键。</p>
+<h3 id="分布式服务架构"><a href="#分布式服务架构" class="headerlink" title="分布式服务架构"></a>分布式服务架构</h3><p>当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务服用及整合的分布式服务框架(RPC)是关键。</p>
+<h3 id="流动计算架构"><a href="#流动计算架构" class="headerlink" title="流动计算架构"></a>流动计算架构</h3><p>当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需要增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)是关键。</p>
+<p><strong>Spring出现之前使用的是EJB</strong></p>
+<h2 id="主流框架演变之路"><a href="#主流框架演变之路" class="headerlink" title="主流框架演变之路"></a>主流框架演变之路</h2><ol>
+<li><p>JSP + Servlet + JavaBean</p>
+<ul>
+<li><p>JSP: Java Server Page 能内置Java代码，但配置比较麻烦</p>
+</li>
+<li><p>Servlet: Server Applet</p>
+</li>
+<li><p>JavaBean: 更多用于描述现实世界某个具体事物的抽象</p>
+</li>
+</ul>
+</li>
+<li><p>MVC三层架构</p>
+<p>Model + View + Control</p>
+<p> 层次分清，耦合性低</p>
+</li>
+<li><p>使用EJB进行应用开发，但是EJB是重量级框架，使用时有过多的接口和依赖，侵入性强，在使用上比较麻烦</p>
+</li>
+<li><p>SSH(Struts1/Struts2 + Hibernate + Spring)</p>
+</li>
+<li><p>SpringMVC + MyBatis + Spring</p>
+</li>
+<li><p>SpringBoot开发，约定大于配置</p>
+</li>
+</ol>
+<h1 id="Spring理论概念"><a href="#Spring理论概念" class="headerlink" title="Spring理论概念"></a>Spring理论概念</h1><p><strong>Spring框架作为主流框架立于不败之地在于其生态</strong></p>
+<p>官网： <a href="https://spring.io/" target="_blank" rel="noopener">https://spring.io/</a></p>
+<h2 id="关于版本"><a href="#关于版本" class="headerlink" title="关于版本"></a>关于版本</h2><ul>
+<li><p>GA（General Availability）：表示正式发布的版本，官方推荐使用此版本</p>
+</li>
+<li><p>PRE： 预览版，内部测试版，主要给开发人员和测试人员测试用</p>
+</li>
+<li>SNAPSHOT： 快照版，可稳定使用，且仍在继续改进版本</li>
+</ul>
+<h2 id="核心解释"><a href="#核心解释" class="headerlink" title="核心解释"></a>核心解释</h2><p>Spring是一个开源框架，为了简化企业开发而生，使开发变得更加优雅和简洁</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li><p>通过DI、AOP和消除样板式代码来简化企业开发</p>
+</li>
+<li><p>Spring框架之外还存在一个构建在核心框架之上的庞大生态圈，它将Spring扩展到不同领域，如Web服务、REST、移动开发以及NoSQL</p>
+</li>
+<li>低侵入式设计，代码的污染极低</li>
+<li>独立于各种应用服务器，基于Spring的框架的应用可以真正实现Write Once, Run Anywhere</li>
+<li>Spring的IOC容器降低了业务对象替换的复杂性，提高了组件之间的解耦</li>
+<li>Spring的AOP支持允许将一些通用任务如安全、事务、日志等进行集中式处理，从而提供了更好的服用</li>
+<li>Spring的ORM和DAO提供了与第三方持久层框架的良好整合，并简化了底层的数据库访问</li>
+<li>Spring的高度开放性，并不强制应用完全依赖于Spring,开发者可自由选用Spring框架的部分或者全部</li>
+</ol>
+<h2 id="IOC-Inversion-of-Control-控制反转"><a href="#IOC-Inversion-of-Control-控制反转" class="headerlink" title="IOC(Inversion of Control) 控制反转"></a>IOC(Inversion of Control) 控制反转</h2><h3 id="什么是IOC"><a href="#什么是IOC" class="headerlink" title="什么是IOC"></a>什么是IOC</h3><p>IOC与依赖注入(DI)同理，这是一个通过依赖注入对象的过程，也就是说他们所使用的对象，是通过构造函数参数、工厂方法的参数或从工厂方法的构造函数或返回值的对象实例设置的属性，然后容器在创建bean时注入这些需要的依赖。这个过程相对于普通创建对象的过程是反向的，因此称之为IOC。</p>
+<p>谁控制谁： IOC容器控制对象</p>
+<p>控制什么： 实现过程中所需要依赖的对象</p>
+<p>什么是反转： IOC容器之前我们都是在对象中主动去创建依赖的对象，这是正转；有了IOC之后依赖的对象直接由IOC容器创建后注入到对象中，由主动创建变成了被动接受，这是反转</p>
+<p>哪些方面被反转：依赖的对象</p>
+<h3 id="IOC与DI"><a href="#IOC与DI" class="headerlink" title="IOC与DI"></a>IOC与DI</h3><p>IOC是设计思想，DI是具体的实现方式</p>
+<h1 id="Spring的使用"><a href="#Spring的使用" class="headerlink" title="Spring的使用"></a>Spring的使用</h1>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/1366903039.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/441102482.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/163/1366903034.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='https://link.hhtjim.com/163/32358691.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='https://link.hhtjim.com/163/33418857.mp3'></li>
+                        
+                    
+                        
+                            <li title='5' data-url='https://link.hhtjim.com/163/1313107870.mp3'></li>
+                        
+                    
+                        
+                            <li title='6' data-url='https://link.hhtjim.com/163/2857699855.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring初识"><span class="toc-number">1.</span> <span class="toc-text">Spring初识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#框架"><span class="toc-number">1.1.</span> <span class="toc-text">框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件设计发展历程"><span class="toc-number">1.2.</span> <span class="toc-text">软件设计发展历程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单一应用架构"><span class="toc-number">1.2.1.</span> <span class="toc-text">单一应用架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垂直应用架构"><span class="toc-number">1.2.2.</span> <span class="toc-text">垂直应用架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式服务架构"><span class="toc-number">1.2.3.</span> <span class="toc-text">分布式服务架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流动计算架构"><span class="toc-number">1.2.4.</span> <span class="toc-text">流动计算架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主流框架演变之路"><span class="toc-number">1.3.</span> <span class="toc-text">主流框架演变之路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring理论概念"><span class="toc-number">2.</span> <span class="toc-text">Spring理论概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于版本"><span class="toc-number">2.1.</span> <span class="toc-text">关于版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心解释"><span class="toc-number">2.2.</span> <span class="toc-text">核心解释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点"><span class="toc-number">2.2.0.1.</span> <span class="toc-text">优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IOC-Inversion-of-Control-控制反转"><span class="toc-number">2.3.</span> <span class="toc-text">IOC(Inversion of Control) 控制反转</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是IOC"><span class="toc-number">2.3.1.</span> <span class="toc-text">什么是IOC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IOC与DI"><span class="toc-number">2.3.2.</span> <span class="toc-text">IOC与DI</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring的使用"><span class="toc-number">3.</span> <span class="toc-text">Spring的使用</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
