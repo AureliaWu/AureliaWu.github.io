@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>vsCode</title>
+    <url>/2019/10/13/IDEs/vsCode/</url>
+    <content><![CDATA[<h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><p>安装主题插件，个人偏好 <code>One Dark Pro</code></p>
+<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><h2 id="键入提示"><a href="#键入提示" class="headerlink" title="键入提示"></a>键入提示</h2><p>vsCode安装成功后，内置了Emmet插件，用于对一些代码进行补全</p>
+<p><code>h1*6 + tab/enter键</code>: </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>h1*6&gt;{1级标题} + tab/enter键</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>h$*6&gt;{$级标题} + tab/enter键</code>: </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>2级标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>3级标题<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>4级标题<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h5</span>&gt;</span>5级标题<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h6</span>&gt;</span>6级标题<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>lorem</code>： 乱数假文，没有任何实际含义的数字</p>
+<p>例如： </p>
+<p><code>p*6&gt;lorem + tab/enter键</code> ： 生成六段乱数假文，用于写静态页面时测试排版</p>
+<p><code>p*6&gt;lorem1 + tab/enter键</code>： 生成六段乱数假文，每段只有一个单词</p>
+<p><code>p*6&gt;lorem1000 + tab/enter键</code>： 生成六段乱数假文，每段只有1000个单词</p>
+<p><code>(h2&gt;{章节1})+p&gt;lorem</code> : </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>章节1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veritatis perferendis sint ipsa consectetur eligendi fugiat magni officiis! Nisi repellendus dignissimos dolorem a adipisci odit omnis, id nobis in quod.   </span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>(h2[id=&quot;chapter$&quot;]&gt;{章节$})*6</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter1"</span>&gt;</span>章节1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter2"</span>&gt;</span>章节2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter3"</span>&gt;</span>章节3<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter4"</span>&gt;</span>章节4<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter5"</span>&gt;</span>章节5<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter6"</span>&gt;</span>章节6<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他快捷键"><a href="#其他快捷键" class="headerlink" title="其他快捷键"></a>其他快捷键</h2><p><code>ctrl + enter键</code>： 光标切换至下一行<br><code>ctrl + shift + enter键</code>： 光标切换至上一行</p>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><p>按住鼠标中间上下移动，可将光标选中多行进行编辑</p>
+<hr>
+]]></content>
+      <categories>
+        <category>IDEs, vsCode</category>
+      </categories>
+      <tags>
+        <tag>IDEs</tag>
+        <tag>vsCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>日语CATTI三级笔译</title>
     <url>/2020/08/14/naturalLanguage/%E6%97%A5%E8%AF%ADCATTI%E4%B8%89%E7%BA%A7%E7%AC%94%E8%AF%91/</url>
     <content><![CDATA[<h1 id="考试简介"><a href="#考试简介" class="headerlink" title="考试简介"></a>考试简介</h1><h2 id="考试科目"><a href="#考试科目" class="headerlink" title="考试科目"></a>考试科目</h2><p>三级笔译考试设《笔译综合能力》和《笔译实务》两个科目，均采用纸笔作答方式进行。</p>
@@ -49,38 +81,6 @@
         <tag>naturalLanguage</tag>
         <tag>Japanese</tag>
         <tag>日语</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vsCode</title>
-    <url>/2019/10/13/IDEs/vsCode/</url>
-    <content><![CDATA[<h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><p>安装主题插件，个人偏好 <code>One Dark Pro</code></p>
-<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><h2 id="键入提示"><a href="#键入提示" class="headerlink" title="键入提示"></a>键入提示</h2><p>vsCode安装成功后，内置了Emmet插件，用于对一些代码进行补全</p>
-<p><code>h1*6 + tab/enter键</code>: </p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>h1*6&gt;{1级标题} + tab/enter键</code>:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>h$*6&gt;{$级标题} + tab/enter键</code>: </p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>1级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>2级标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>3级标题<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>4级标题<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h5</span>&gt;</span>5级标题<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h6</span>&gt;</span>6级标题<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>lorem</code>： 乱数假文，没有任何实际含义的数字</p>
-<p>例如： </p>
-<p><code>p*6&gt;lorem + tab/enter键</code> ： 生成六段乱数假文，用于写静态页面时测试排版</p>
-<p><code>p*6&gt;lorem1 + tab/enter键</code>： 生成六段乱数假文，每段只有一个单词</p>
-<p><code>p*6&gt;lorem1000 + tab/enter键</code>： 生成六段乱数假文，每段只有1000个单词</p>
-<p><code>(h2&gt;{章节1})+p&gt;lorem</code> : </p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>章节1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veritatis perferendis sint ipsa consectetur eligendi fugiat magni officiis! Nisi repellendus dignissimos dolorem a adipisci odit omnis, id nobis in quod.   </span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>(h2[id=&quot;chapter$&quot;]&gt;{章节$})*6</code>:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter1"</span>&gt;</span>章节1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter2"</span>&gt;</span>章节2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter3"</span>&gt;</span>章节3<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter4"</span>&gt;</span>章节4<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter5"</span>&gt;</span>章节5<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">"chapter6"</span>&gt;</span>章节6<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="其他快捷键"><a href="#其他快捷键" class="headerlink" title="其他快捷键"></a>其他快捷键</h2><p><code>ctrl + enter键</code>： 光标切换至下一行<br><code>ctrl + shift + enter键</code>： 光标切换至上一行</p>
-<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><p>按住鼠标中间上下移动，可将光标选中多行进行编辑</p>
-<hr>
-]]></content>
-      <categories>
-        <category>IDEs, vsCode</category>
-      </categories>
-      <tags>
-        <tag>IDEs</tag>
-        <tag>vsCode</tag>
       </tags>
   </entry>
   <entry>
@@ -456,6 +456,45 @@ Bob->Alice : hello
       </tags>
   </entry>
   <entry>
+    <title>UI</title>
+    <url>/2019/06/22/computerLanguage/UI/UI%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h1 id="UI入门"><a href="#UI入门" class="headerlink" title="UI入门"></a>UI入门</h1><p>UI设计的合理进阶： 联系设计 + 联系产品</p>
+<h2 id="视觉层次"><a href="#视觉层次" class="headerlink" title="视觉层次"></a>视觉层次</h2><h3 id="版面层级"><a href="#版面层级" class="headerlink" title="版面层级"></a>版面层级</h3><p>页面层级： 图片 &gt; 图标 &gt; 文字</p>
+<h3 id="板块凸显"><a href="#板块凸显" class="headerlink" title="板块凸显"></a>板块凸显</h3><ol>
+<li>卡片式设计（凸显板块）</li>
+</ol>
+<p>难点： 合适的阴影设计——弥散(使用PS进行操作)</p>
+<p>PS操作重点：</p>
+<ul>
+<li>创建圆角矩形</li>
+<li>复制图层作为阴影层，缩小至90%,适当调整颜色</li>
+<li>阴影层板块： 属性–&gt;蒙版–&gt;羽化30像素(可自行调节)</li>
+<li>整个阴影层板块稍微下移，制造阴影效果</li>
+</ul>
+<ol start="2">
+<li><p>增加角标(凸显细小版块)</p>
+</li>
+<li><p>增加标签(凸显细节)</p>
+</li>
+</ol>
+<p>使用PS设计小标签：</p>
+<ul>
+<li>文字大小基本为24像素，中粗黑字体</li>
+<li>左右间距一般大于上下边距，使标签设计有呼吸感</li>
+</ul>
+<h3 id="文字层级"><a href="#文字层级" class="headerlink" title="文字层级"></a>文字层级</h3><p>字重、颜色、特殊字体包</p>
+<hr>
+<p>参考视频: <a href="https://huke88.com/course/12944.html" target="_blank" rel="noopener">https://huke88.com/course/12944.html</a></p>
+]]></content>
+      <categories>
+        <category>UI</category>
+      </categories>
+      <tags>
+        <tag>Computer Language</tag>
+        <tag>UI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Oracle数据库</title>
     <url>/2019/07/24/computerLanguage/database/oracle/</url>
     <content><![CDATA[<h1 id="Oracle的安装"><a href="#Oracle的安装" class="headerlink" title="Oracle的安装"></a>Oracle的安装</h1><h2 id="数据库和数据仓库"><a href="#数据库和数据仓库" class="headerlink" title="数据库和数据仓库"></a>数据库和数据仓库</h2><p>数据库： 对数据进行持久化存储，将数据直接存储到磁盘</p>
@@ -580,45 +619,6 @@ Bob->Alice : hello
       </tags>
   </entry>
   <entry>
-    <title>UI</title>
-    <url>/2019/06/22/computerLanguage/UI/UI%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h1 id="UI入门"><a href="#UI入门" class="headerlink" title="UI入门"></a>UI入门</h1><p>UI设计的合理进阶： 联系设计 + 联系产品</p>
-<h2 id="视觉层次"><a href="#视觉层次" class="headerlink" title="视觉层次"></a>视觉层次</h2><h3 id="版面层级"><a href="#版面层级" class="headerlink" title="版面层级"></a>版面层级</h3><p>页面层级： 图片 &gt; 图标 &gt; 文字</p>
-<h3 id="板块凸显"><a href="#板块凸显" class="headerlink" title="板块凸显"></a>板块凸显</h3><ol>
-<li>卡片式设计（凸显板块）</li>
-</ol>
-<p>难点： 合适的阴影设计——弥散(使用PS进行操作)</p>
-<p>PS操作重点：</p>
-<ul>
-<li>创建圆角矩形</li>
-<li>复制图层作为阴影层，缩小至90%,适当调整颜色</li>
-<li>阴影层板块： 属性–&gt;蒙版–&gt;羽化30像素(可自行调节)</li>
-<li>整个阴影层板块稍微下移，制造阴影效果</li>
-</ul>
-<ol start="2">
-<li><p>增加角标(凸显细小版块)</p>
-</li>
-<li><p>增加标签(凸显细节)</p>
-</li>
-</ol>
-<p>使用PS设计小标签：</p>
-<ul>
-<li>文字大小基本为24像素，中粗黑字体</li>
-<li>左右间距一般大于上下边距，使标签设计有呼吸感</li>
-</ul>
-<h3 id="文字层级"><a href="#文字层级" class="headerlink" title="文字层级"></a>文字层级</h3><p>字重、颜色、特殊字体包</p>
-<hr>
-<p>参考视频: <a href="https://huke88.com/course/12944.html" target="_blank" rel="noopener">https://huke88.com/course/12944.html</a></p>
-]]></content>
-      <categories>
-        <category>UI</category>
-      </categories>
-      <tags>
-        <tag>Computer Language</tag>
-        <tag>UI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ofbiz</title>
     <url>/2019/10/23/computerLanguage/frameworks/ofbiz/</url>
     <content><![CDATA[<h1 id="Ofbiz权限设计"><a href="#Ofbiz权限设计" class="headerlink" title="Ofbiz权限设计"></a>Ofbiz权限设计</h1><h2 id="相关表"><a href="#相关表" class="headerlink" title="相关表"></a>相关表</h2><h2 id="用户登录表-user-login"><a href="#用户登录表-user-login" class="headerlink" title="用户登录表 user_login"></a>用户登录表 <code>user_login</code></h2><h2 id="安全组列表-security-group"><a href="#安全组列表-security-group" class="headerlink" title="安全组列表 security_group"></a>安全组列表 <code>security_group</code></h2><h2 id="登录用户和安全组关系表-user-login-security-group"><a href="#登录用户和安全组关系表-user-login-security-group" class="headerlink" title="登录用户和安全组关系表 user_login_security_group"></a>登录用户和安全组关系表 <code>user_login_security_group</code></h2><h2 id="权限组列表-security-permission"><a href="#权限组列表-security-permission" class="headerlink" title="权限组列表 security_permission"></a>权限组列表 <code>security_permission</code></h2><p>‘security_permission’中的数据是在 <code>xxxSecurityPermissionSeedData.xml</code>文件中配置的，<code>xxx</code>表示组件名称</p>
@@ -630,6 +630,24 @@ Bob->Alice : hello
         <tag>Computer Language</tag>
         <tag>framework</tag>
         <tag>Ofbiz</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微服务</title>
+    <url>/2019/06/13/computerLanguage/microservice/microservice/</url>
+    <content><![CDATA[<h1 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h1><h2 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h2><p>SOA： Service Oriented Architecture，面向服务的架构<br>业务服务(business service)</p>
+<p>前台访问服务：<br>客户端UI–&gt;API Gateway –&gt;访问后台服务</p>
+<p>服务之间互相调用：<br>IPC(Inter Process Communication)</p>
+<p>REST（JAX-RS，Spring Boot）</p>
+<p>RPC（Thrift, Dubbo）</p>
+<p>异步消息调用(Kafka, Notify)</p>
+]]></content>
+      <categories>
+        <category>microservice</category>
+      </categories>
+      <tags>
+        <tag>Computer Language</tag>
+        <tag>microservice</tag>
       </tags>
   </entry>
   <entry>
@@ -691,21 +709,113 @@ Bob->Alice : hello
       </tags>
   </entry>
   <entry>
-    <title>微服务</title>
-    <url>/2019/06/13/computerLanguage/microservice/microservice/</url>
-    <content><![CDATA[<h1 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h1><h2 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h2><p>SOA： Service Oriented Architecture，面向服务的架构<br>业务服务(business service)</p>
-<p>前台访问服务：<br>客户端UI–&gt;API Gateway –&gt;访问后台服务</p>
-<p>服务之间互相调用：<br>IPC(Inter Process Communication)</p>
-<p>REST（JAX-RS，Spring Boot）</p>
-<p>RPC（Thrift, Dubbo）</p>
-<p>异步消息调用(Kafka, Notify)</p>
+    <title>uni-app</title>
+    <url>/2019/08/25/computerLanguage/web/uni-app/</url>
+    <content><![CDATA[<h1 id="uni-app笔记"><a href="#uni-app笔记" class="headerlink" title="uni-app笔记"></a>uni-app笔记</h1><h2 id="uni-app介绍"><a href="#uni-app介绍" class="headerlink" title="uni-app介绍"></a>uni-app介绍</h2><p><code>uni-app</code> 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。</p>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><h3 id="下载编辑器HBuilderX"><a href="#下载编辑器HBuilderX" class="headerlink" title="下载编辑器HBuilderX"></a>下载编辑器HBuilderX</h3><p>HBuilderX，以下简称HX， HX是轻量编辑器和强大IDE的完美结合体。敏捷的性能，清爽的界面，强大的功能和于一身。HX是通用的前端开发工具，但为uni-app做了特别强化。<br>下载App开发版，可开箱即用；如下载标准版，在运行或发行uni-app时，会提示安装uni-app插件，插件下载完成后方可使用。因此，直接下载APP版比较方便。</p>
+<p>下载地址： <a href="https://www.dcloud.io/hbuilderx.html" target="_blank" rel="noopener">https://www.dcloud.io/hbuilderx.html</a></p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><h2 id="页面样式与布局"><a href="#页面样式与布局" class="headerlink" title="页面样式与布局"></a>页面样式与布局</h2><p>flex布局？</p>
+<p>尺寸和单位： H5适配，宽度使用百分比，高度使用px<br>uniapp 基准宽度为750px，设计稿1px与框架样式1px转换公式： 设计稿 1px / 设计稿基准宽度 = 框架样式 1px / 750px</p>
+<p>内联样式，直接在页面使用style,写在app.vue会应用于所有页面</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="pages-json"><a href="#pages-json" class="headerlink" title="pages.json"></a>pages.json</h3><h4 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"pages"</span>: [ <span class="comment">//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"path"</span>: <span class="string">"pages/index/index"</span>,</span><br><span class="line">			<span class="attr">"style"</span>: &#123;</span><br><span class="line">				<span class="attr">"navigationBarTitleText"</span>: <span class="string">"uni-app"</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"globalStyle"</span>: &#123;</span><br><span class="line">		<span class="attr">"navigationBarTextStyle"</span>: <span class="string">"black"</span>,<span class="comment">// 导航栏文字颜色</span></span><br><span class="line">		<span class="attr">"navigationBarTitleText"</span>: <span class="string">"uni-app"</span>,</span><br><span class="line">		<span class="attr">"navigationBarBackgroundColor"</span>: <span class="string">"#F8F8F8"</span>,</span><br><span class="line">		<span class="attr">"backgroundColor"</span>: <span class="string">"#F8F8F8"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>pages</code>每新建一个页面需要配置一次，放在第一个表示入口页面<br><code>pages.styles</code> 每个页面个性化背景颜色等配置</p>
+<h4 id="tabBar"><a href="#tabBar" class="headerlink" title="tabBar"></a>tabBar</h4><p>color: 文字颜色<br>selectedColor: 选中颜色<br>list: 配置文件路径、图标、名称等</p>
+<p>最多只能放五个小图标</p>
+<h4 id="condition"><a href="#condition" class="headerlink" title="condition"></a>condition</h4><p>启动模式配置，仅开发期间生效，用户检查传值？</p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="应用生命周期"><a href="#应用生命周期" class="headerlink" title="应用生命周期"></a>应用生命周期</h3><p><code>App.vue</code>文件中的<code>onLaunch</code> <code>onShow</code> <code>onHide</code> 表示的是整个应用的生命周期，进入应用–&gt;显示应用–&gt;关闭应用</p>
+<p><code>onLaunch</code>全局只触发一次，可在此处获取用户操作的场景值，如进入主程序、扫码进入程序…</p>
+<h3 id="页面生命周期"><a href="#页面生命周期" class="headerlink" title="页面生命周期"></a>页面生命周期</h3><p>每个页面自己的生命周期：  <code>onLoad</code> <code>onReady</code> <code>onShow</code> <code>onHide</code> 等</p>
+<p><code>onLoad</code>： 页面初始化，执行一次</p>
+<p><code>onShow</code>: 页面进入执行，进入多次，执行多次</p>
+<p><code>onReady</code>: 页面加载完毕，执行一次</p>
+<p><code>onHide</code>: 页面离开执行，离开多次，执行多次</p>
+<p><code>onPullDownRefresh</code>: 监听用户下拉动作</p>
+<pre><code>- 需要在 `pages.json` 里，找到的当前页面的`pages`节点，并在 `style` 选项中开启 `enablePullDownRefresh`。
+
+- 当处理完数据刷新后，`uni.stopPullDownRefresh` 可以停止当前页面的下拉刷新。
+</code></pre><p><code>onShareAppMessage</code>: 用户点击右上角分享</p>
+<h3 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h3><p>写在组件中。</p>
+<p><code>beforeMount</code>: 在挂载开始之前被调用</p>
+<p><code>mounted</code>: 挂载到实例上之后调用</p>
+<h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><h3 id="跳转至tabbar中配置的页面"><a href="#跳转至tabbar中配置的页面" class="headerlink" title="跳转至tabbar中配置的页面"></a>跳转至tabbar中配置的页面</h3><p><code>uni.switchTab(OBJECT)</code></p>
+<p><code>OBJECT</code>参数: </p>
+<ul>
+<li><p><code>url</code> </p>
+<p>  需要跳转的 tabBar 页面的路径（需在 pages.json 的 tabBar 字段定义的页面），路径后不能带参数</p>
+</li>
+<li><p><code>success</code>  </p>
+<p>  接口调用成功的回调函数</p>
+</li>
+<li><p><code>fail</code> </p>
+<p>  接口调用失败的回调函数</p>
+</li>
+<li><p><code>complete</code></p>
+<p>  接口调用结束的回调函数（调用成功、失败都会执行）</p>
+</li>
+</ul>
+<h3 id="跳转至非tabbar中配置的页面"><a href="#跳转至非tabbar中配置的页面" class="headerlink" title="跳转至非tabbar中配置的页面"></a>跳转至非tabbar中配置的页面</h3><h4 id="navigateTo"><a href="#navigateTo" class="headerlink" title="navigateTo"></a>navigateTo</h4><p><code>uni.navigateTo(OBJECT)</code></p>
+<p>不关闭当前页，跳转至新页面。如列表页跳到详情页</p>
+<p><code>OBJECT</code>参数： </p>
+<ul>
+<li><p><code>url</code>    </p>
+<p>  需要跳转的应用内非<code>tabBar</code>的页面的路径 , 路径后可以带参数。<br>  参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&amp;分隔；</p>
+</li>
+<li><p><code>animationType</code>    </p>
+<p>  默认值为<code>pop-in</code>，表示窗口显示的动画效果</p>
+</li>
+<li><p><code>animationDuration</code></p>
+<p>  窗口动画持续时间，单位为ms</p>
+</li>
+<li><p><code>success</code>    </p>
+<p>  接口调用成功的回调函数    </p>
+</li>
+<li><p><code>fail</code></p>
+<p>  接口调用失败的回调函数    </p>
+</li>
+<li><p><code>complete</code></p>
+<p>  接口调用结束的回调函数（调用成功、失败都会执行）</p>
+</li>
+</ul>
+<h4 id="redirectTo"><a href="#redirectTo" class="headerlink" title="redirectTo"></a>redirectTo</h4><p><code>uni.redirectTo(OBJECT)</code></p>
+<p>关闭当前页面，跳转新页面</p>
+<h2 id="模板语法和数据绑定"><a href="#模板语法和数据绑定" class="headerlink" title="模板语法和数据绑定"></a>模板语法和数据绑定</h2><p>声明在data中的数据是响应式绑定</p>
+<h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><p>使用 <code>v-for</code>属性</p>
+<h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><p>使用 <code>v-if</code> 或 <code>v-hidden</code>属性</p>
+<p><code>v-if</code> 根据条件进行渲染<br><code>v-hidden</code> 根据条件进行展示，类似于<code>v-show</code></p>
+<h2 id="class-和-style-的绑定"><a href="#class-和-style-的绑定" class="headerlink" title="class 和 style 的绑定"></a>class 和 style 的绑定</h2><h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>class支持的语法 <code>:class</code><br>style支持的语法 <code>:style</code></p>
+<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><p>事件映射表：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>uni-app中没有什么默认事件，比如submit不会自动提交</p>
+<h2 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h2><p><code>view</code> : 视图区域<br><code>scroll-view</code> : 滚动区域<br><code>swiper</code> : 轮播区域</p>
+<h2 id="uni-app中的请求"><a href="#uni-app中的请求" class="headerlink" title="uni-app中的请求"></a>uni-app中的请求</h2><hr>
+<p>官方地址： <a href="https://uniapp.dcloud.io/README" target="_blank" rel="noopener">https://uniapp.dcloud.io/README</a></p>
+<p>参考视频: <a href="https://www.bilibili.com/video/av48272338?from=search&amp;seid=7223491785740158297" target="_blank" rel="noopener">https://www.bilibili.com/video/av48272338?from=search&amp;seid=7223491785740158297</a></p>
 ]]></content>
       <categories>
-        <category>microservice</category>
+        <category>web</category>
+        <category>vue</category>
+        <category>uni-app</category>
       </categories>
       <tags>
         <tag>Computer Language</tag>
-        <tag>microservice</tag>
+        <tag>web</tag>
+        <tag>vue</tag>
+        <tag>uni-app</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>泰语基础</title>
+    <url>/2019/10/08/naturalLanguage/DaiLanguage/Dai/</url>
+    <content><![CDATA[<h2 id="泰语入门"><a href="#泰语入门" class="headerlink" title="泰语入门"></a>泰语入门</h2><hr>
+<p>参考视频: <a href="https://www.bilibili.com/video/av2204155?t=1085" target="_blank" rel="noopener">https://www.bilibili.com/video/av2204155?t=1085</a></p>
+]]></content>
+      <categories>
+        <category>natural language</category>
+        <category>Dai</category>
+      </categories>
+      <tags>
+        <tag>natural language</tag>
+        <tag>Dai</tag>
       </tags>
   </entry>
   <entry>
@@ -885,116 +995,6 @@ Bob->Alice : hello
       <tags>
         <tag>Computer Language</tag>
         <tag>miniProgram</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>uni-app</title>
-    <url>/2019/08/25/computerLanguage/web/uni-app/</url>
-    <content><![CDATA[<h1 id="uni-app笔记"><a href="#uni-app笔记" class="headerlink" title="uni-app笔记"></a>uni-app笔记</h1><h2 id="uni-app介绍"><a href="#uni-app介绍" class="headerlink" title="uni-app介绍"></a>uni-app介绍</h2><p><code>uni-app</code> 是一个使用 Vue.js 开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台。</p>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><h3 id="下载编辑器HBuilderX"><a href="#下载编辑器HBuilderX" class="headerlink" title="下载编辑器HBuilderX"></a>下载编辑器HBuilderX</h3><p>HBuilderX，以下简称HX， HX是轻量编辑器和强大IDE的完美结合体。敏捷的性能，清爽的界面，强大的功能和于一身。HX是通用的前端开发工具，但为uni-app做了特别强化。<br>下载App开发版，可开箱即用；如下载标准版，在运行或发行uni-app时，会提示安装uni-app插件，插件下载完成后方可使用。因此，直接下载APP版比较方便。</p>
-<p>下载地址： <a href="https://www.dcloud.io/hbuilderx.html" target="_blank" rel="noopener">https://www.dcloud.io/hbuilderx.html</a></p>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><h2 id="页面样式与布局"><a href="#页面样式与布局" class="headerlink" title="页面样式与布局"></a>页面样式与布局</h2><p>flex布局？</p>
-<p>尺寸和单位： H5适配，宽度使用百分比，高度使用px<br>uniapp 基准宽度为750px，设计稿1px与框架样式1px转换公式： 设计稿 1px / 设计稿基准宽度 = 框架样式 1px / 750px</p>
-<p>内联样式，直接在页面使用style,写在app.vue会应用于所有页面</p>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><h3 id="pages-json"><a href="#pages-json" class="headerlink" title="pages.json"></a>pages.json</h3><h4 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"pages"</span>: [ <span class="comment">//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"path"</span>: <span class="string">"pages/index/index"</span>,</span><br><span class="line">			<span class="attr">"style"</span>: &#123;</span><br><span class="line">				<span class="attr">"navigationBarTitleText"</span>: <span class="string">"uni-app"</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"globalStyle"</span>: &#123;</span><br><span class="line">		<span class="attr">"navigationBarTextStyle"</span>: <span class="string">"black"</span>,<span class="comment">// 导航栏文字颜色</span></span><br><span class="line">		<span class="attr">"navigationBarTitleText"</span>: <span class="string">"uni-app"</span>,</span><br><span class="line">		<span class="attr">"navigationBarBackgroundColor"</span>: <span class="string">"#F8F8F8"</span>,</span><br><span class="line">		<span class="attr">"backgroundColor"</span>: <span class="string">"#F8F8F8"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>pages</code>每新建一个页面需要配置一次，放在第一个表示入口页面<br><code>pages.styles</code> 每个页面个性化背景颜色等配置</p>
-<h4 id="tabBar"><a href="#tabBar" class="headerlink" title="tabBar"></a>tabBar</h4><p>color: 文字颜色<br>selectedColor: 选中颜色<br>list: 配置文件路径、图标、名称等</p>
-<p>最多只能放五个小图标</p>
-<h4 id="condition"><a href="#condition" class="headerlink" title="condition"></a>condition</h4><p>启动模式配置，仅开发期间生效，用户检查传值？</p>
-<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="应用生命周期"><a href="#应用生命周期" class="headerlink" title="应用生命周期"></a>应用生命周期</h3><p><code>App.vue</code>文件中的<code>onLaunch</code> <code>onShow</code> <code>onHide</code> 表示的是整个应用的生命周期，进入应用–&gt;显示应用–&gt;关闭应用</p>
-<p><code>onLaunch</code>全局只触发一次，可在此处获取用户操作的场景值，如进入主程序、扫码进入程序…</p>
-<h3 id="页面生命周期"><a href="#页面生命周期" class="headerlink" title="页面生命周期"></a>页面生命周期</h3><p>每个页面自己的生命周期：  <code>onLoad</code> <code>onReady</code> <code>onShow</code> <code>onHide</code> 等</p>
-<p><code>onLoad</code>： 页面初始化，执行一次</p>
-<p><code>onShow</code>: 页面进入执行，进入多次，执行多次</p>
-<p><code>onReady</code>: 页面加载完毕，执行一次</p>
-<p><code>onHide</code>: 页面离开执行，离开多次，执行多次</p>
-<p><code>onPullDownRefresh</code>: 监听用户下拉动作</p>
-<pre><code>- 需要在 `pages.json` 里，找到的当前页面的`pages`节点，并在 `style` 选项中开启 `enablePullDownRefresh`。
-
-- 当处理完数据刷新后，`uni.stopPullDownRefresh` 可以停止当前页面的下拉刷新。
-</code></pre><p><code>onShareAppMessage</code>: 用户点击右上角分享</p>
-<h3 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h3><p>写在组件中。</p>
-<p><code>beforeMount</code>: 在挂载开始之前被调用</p>
-<p><code>mounted</code>: 挂载到实例上之后调用</p>
-<h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><h3 id="跳转至tabbar中配置的页面"><a href="#跳转至tabbar中配置的页面" class="headerlink" title="跳转至tabbar中配置的页面"></a>跳转至tabbar中配置的页面</h3><p><code>uni.switchTab(OBJECT)</code></p>
-<p><code>OBJECT</code>参数: </p>
-<ul>
-<li><p><code>url</code> </p>
-<p>  需要跳转的 tabBar 页面的路径（需在 pages.json 的 tabBar 字段定义的页面），路径后不能带参数</p>
-</li>
-<li><p><code>success</code>  </p>
-<p>  接口调用成功的回调函数</p>
-</li>
-<li><p><code>fail</code> </p>
-<p>  接口调用失败的回调函数</p>
-</li>
-<li><p><code>complete</code></p>
-<p>  接口调用结束的回调函数（调用成功、失败都会执行）</p>
-</li>
-</ul>
-<h3 id="跳转至非tabbar中配置的页面"><a href="#跳转至非tabbar中配置的页面" class="headerlink" title="跳转至非tabbar中配置的页面"></a>跳转至非tabbar中配置的页面</h3><h4 id="navigateTo"><a href="#navigateTo" class="headerlink" title="navigateTo"></a>navigateTo</h4><p><code>uni.navigateTo(OBJECT)</code></p>
-<p>不关闭当前页，跳转至新页面。如列表页跳到详情页</p>
-<p><code>OBJECT</code>参数： </p>
-<ul>
-<li><p><code>url</code>    </p>
-<p>  需要跳转的应用内非<code>tabBar</code>的页面的路径 , 路径后可以带参数。<br>  参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&amp;分隔；</p>
-</li>
-<li><p><code>animationType</code>    </p>
-<p>  默认值为<code>pop-in</code>，表示窗口显示的动画效果</p>
-</li>
-<li><p><code>animationDuration</code></p>
-<p>  窗口动画持续时间，单位为ms</p>
-</li>
-<li><p><code>success</code>    </p>
-<p>  接口调用成功的回调函数    </p>
-</li>
-<li><p><code>fail</code></p>
-<p>  接口调用失败的回调函数    </p>
-</li>
-<li><p><code>complete</code></p>
-<p>  接口调用结束的回调函数（调用成功、失败都会执行）</p>
-</li>
-</ul>
-<h4 id="redirectTo"><a href="#redirectTo" class="headerlink" title="redirectTo"></a>redirectTo</h4><p><code>uni.redirectTo(OBJECT)</code></p>
-<p>关闭当前页面，跳转新页面</p>
-<h2 id="模板语法和数据绑定"><a href="#模板语法和数据绑定" class="headerlink" title="模板语法和数据绑定"></a>模板语法和数据绑定</h2><p>声明在data中的数据是响应式绑定</p>
-<h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><p>使用 <code>v-for</code>属性</p>
-<h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><p>使用 <code>v-if</code> 或 <code>v-hidden</code>属性</p>
-<p><code>v-if</code> 根据条件进行渲染<br><code>v-hidden</code> 根据条件进行展示，类似于<code>v-show</code></p>
-<h2 id="class-和-style-的绑定"><a href="#class-和-style-的绑定" class="headerlink" title="class 和 style 的绑定"></a>class 和 style 的绑定</h2><h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>class支持的语法 <code>:class</code><br>style支持的语法 <code>:style</code></p>
-<h2 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h2><p>事件映射表：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>uni-app中没有什么默认事件，比如submit不会自动提交</p>
-<h2 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h2><p><code>view</code> : 视图区域<br><code>scroll-view</code> : 滚动区域<br><code>swiper</code> : 轮播区域</p>
-<h2 id="uni-app中的请求"><a href="#uni-app中的请求" class="headerlink" title="uni-app中的请求"></a>uni-app中的请求</h2><hr>
-<p>官方地址： <a href="https://uniapp.dcloud.io/README" target="_blank" rel="noopener">https://uniapp.dcloud.io/README</a></p>
-<p>参考视频: <a href="https://www.bilibili.com/video/av48272338?from=search&amp;seid=7223491785740158297" target="_blank" rel="noopener">https://www.bilibili.com/video/av48272338?from=search&amp;seid=7223491785740158297</a></p>
-]]></content>
-      <categories>
-        <category>web</category>
-        <category>vue</category>
-        <category>uni-app</category>
-      </categories>
-      <tags>
-        <tag>Computer Language</tag>
-        <tag>web</tag>
-        <tag>vue</tag>
-        <tag>uni-app</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>泰语基础</title>
-    <url>/2019/10/08/naturalLanguage/DaiLanguage/Dai/</url>
-    <content><![CDATA[<h2 id="泰语入门"><a href="#泰语入门" class="headerlink" title="泰语入门"></a>泰语入门</h2><hr>
-<p>参考视频: <a href="https://www.bilibili.com/video/av2204155?t=1085" target="_blank" rel="noopener">https://www.bilibili.com/video/av2204155?t=1085</a></p>
-]]></content>
-      <categories>
-        <category>natural language</category>
-        <category>Dai</category>
-      </categories>
-      <tags>
-        <tag>natural language</tag>
-        <tag>Dai</tag>
       </tags>
   </entry>
   <entry>
@@ -2504,94 +2504,6 @@ Bob->Alice : hello
       </tags>
   </entry>
   <entry>
-    <title>Phaser3</title>
-    <url>/2019/06/22/computerLanguage/games/phaser/phaser3/</url>
-    <content><![CDATA[<h2 id="什么是Phaser"><a href="#什么是Phaser" class="headerlink" title="什么是Phaser"></a>什么是Phaser</h2><p>Phaser是一个HTML5游戏框架，它的目的是辅助开发者真正快速地制作强大的、跨浏览器的HTML5游戏。 做这个框架，主要是想发掘现代浏览器（兼及桌面和移动两类系统）的优点，。对浏览器的唯一要求是，支持画布（canvas）标签。</p>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><hr>
-<p>参考视频: <a href="http://www.phaser.io/tutorials/making-your-first-phaser-3-game-chinese" target="_blank" rel="noopener">http://www.phaser.io/tutorials/making-your-first-phaser-3-game-chinese</a></p>
-]]></content>
-      <categories>
-        <category>web</category>
-        <category>games</category>
-      </categories>
-      <tags>
-        <tag>Computer Language</tag>
-        <tag>web</tag>
-        <tag>games</tag>
-        <tag>Phaser3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringBoot</title>
-    <url>/2020/04/29/computerLanguage/java/beforeArchitect/springboot/</url>
-    <content><![CDATA[<h1 id="SpringBoot基础"><a href="#SpringBoot基础" class="headerlink" title="SpringBoot基础"></a>SpringBoot基础</h1><h2 id="框架介绍"><a href="#框架介绍" class="headerlink" title="框架介绍"></a>框架介绍</h2><p>SpringBoot主要解决的是在微服务架构下简化配置（有快速配置）、前后端分离、快速开发</p>
-<p>优点： </p>
-<ul>
-<li>提供了快速启动入门</li>
-<li>开箱即用、提供默认配置</li>
-<li>内嵌容器化web项目</li>
-<li>没有冗余代码生成和XML配置要求</li>
-</ul>
-<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><p>模板引擎： 如 <code>Thymeleaf</code>, <code>FreeMarker</code></p>
-<p>有嵌套和解析的过程，先加载静态页面，在静态页面上添加一些标记，模板引擎的内核会根据添加的标记动态渲染数据</p>
-<p><strong>计算向数据移动</strong></p>
-<h3 id="MVC架构思想"><a href="#MVC架构思想" class="headerlink" title="MVC架构思想"></a>MVC架构思想</h3><p>? JVM垃圾回收机制现在已经不是引入计数器的方式，改为GCroot</p>
-<p>? Spring不支持循环引用，主要是因为其自身结构问题。</p>
-<h3 id="基于SpringBoot的MVC"><a href="#基于SpringBoot的MVC" class="headerlink" title="基于SpringBoot的MVC"></a>基于SpringBoot的MVC</h3><ul>
-<li>数据的展示查询</li>
-</ul>
-<h3 id="分层解释"><a href="#分层解释" class="headerlink" title="分层解释"></a>分层解释</h3><ul>
-<li><p><code>Controller</code>层</p>
-<p>一般写业务逻辑跳转</p>
-</li>
-<li><p><code>Service</code>层</p>
-<p>业务层逻辑代码</p>
-</li>
-<li><p><code>DAO</code>层</p>
-<p>操作持久层</p>
-</li>
-</ul>
-<h3 id="各种依赖"><a href="#各种依赖" class="headerlink" title="各种依赖"></a>各种依赖</h3><h4 id="JPA-Java-Persistence-API"><a href="#JPA-Java-Persistence-API" class="headerlink" title="JPA(Java Persistence API)"></a>JPA(Java Persistence API)</h4><p>  添加依赖 <code>Spring-data-jpa</code>, 用于访问数据源的框架，可以把数据库的表映射成对象，一一对应</p>
-<h3 id="注释解说"><a href="#注释解说" class="headerlink" title="注释解说"></a>注释解说</h3><h4 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a><code>@RequestMapping</code></h4><p>请求路径</p>
-<h4 id="PathVariable-quot-key-quot"><a href="#PathVariable-quot-key-quot" class="headerlink" title="@PathVariable(&quot;key&quot;)"></a><code>@PathVariable(&quot;key&quot;)</code></h4><p>取URI中<code>key</code>对应的值</p>
-<h1 id="实践中报错记录"><a href="#实践中报错记录" class="headerlink" title="实践中报错记录"></a>实践中报错记录</h1><h2 id="下载依赖包速度过慢"><a href="#下载依赖包速度过慢" class="headerlink" title="下载依赖包速度过慢"></a>下载依赖包速度过慢</h2><p>解决方法： 配置阿里云镜像地址</p>
-<p>全局配置步骤： </p>
-<ol>
-<li>找到maven的<code>setting.xml</code>文件，若没有可以新建</li>
-<li><p>在<code>setting.xml</code>文件的<code>mirrors</code>节点下面添加子节点</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="运行成功并退出"><a href="#运行成功并退出" class="headerlink" title="运行成功并退出"></a>运行成功并退出</h2><p><code>Process finished with exit code 0</code></p>
-<p>原因： <code>Pom.xml</code>文件缺少依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="引入spring-security每次调用需要输入登录名密码"><a href="#引入spring-security每次调用需要输入登录名密码" class="headerlink" title="引入spring-security每次调用需要输入登录名密码"></a>引入<code>spring-security</code>每次调用需要输入登录名密码</h2><p>解决办法： 关闭验证</p>
-<ol>
-<li><p><code>springboot 2.0</code> 之前可通过yml配置关闭验证：</p>
- <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">security.basic.enabled=false</span></span><br><span class="line"><span class="string">management.security.enabled=false</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>springboot 2.x</code>后关闭验证</p>
-<p> <code>springboot 2.x</code> 后上述配置被废除，需要在启动类前的 <code>@SpringBootApplication</code> 注解中加入 <code>exclude</code> 属性 <code>scurityAutoConfiguration</code></p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span>(exclude = SecurityAutoConfiguration<span class="class">.<span class="keyword">class</span>)</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="数据库连接报错"><a href="#数据库连接报错" class="headerlink" title="数据库连接报错"></a>数据库连接报错</h2><p>报错内容: <code>java.sql.SQLException: The server time zone value &#39;�й���׼ʱ��&#39; is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the &#39;serverTimezone&#39; configuration property) to use a more specifc time zone value if you want to utilize time zone support.</code></p>
-<p>报错原因： 数据库连接时区配置问题</p>
-<p>解决方法： 数据库配置添加时区配置 <code>serverTimezone=UTC</code></p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">$&#123;MYSQL_USER:root&#125;</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">$&#123;MYSQL_PASSWORD:123456&#125;</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://$&#123;MYSQL_HOST:localhost&#125;:$&#123;MYSQL_PORT:3306&#125;/$&#123;MYSQL_DATABASE:dbname&#125;?serverTimezone=UTC&amp;useUnicode=true&amp;useSSL=false&amp;characterEncoding=utf8</span></span><br></pre></td></tr></table></figure>
-<hr>
-<p>参考资料：</p>
-]]></content>
-      <categories>
-        <category>framework,Springboot</category>
-      </categories>
-      <tags>
-        <tag>Computer Language</tag>
-        <tag>framework</tag>
-        <tag>Springboot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>计算机网络基础知识</title>
     <url>/2020/08/10/computerLanguage/java/beforeArchitect/networkBase/</url>
     <content><![CDATA[<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>什么是服务器？</p>
@@ -2709,6 +2621,94 @@ Bob->Alice : hello
         <tag>Computer Language</tag>
         <tag>framework</tag>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Phaser3</title>
+    <url>/2019/06/22/computerLanguage/games/phaser/phaser3/</url>
+    <content><![CDATA[<h2 id="什么是Phaser"><a href="#什么是Phaser" class="headerlink" title="什么是Phaser"></a>什么是Phaser</h2><p>Phaser是一个HTML5游戏框架，它的目的是辅助开发者真正快速地制作强大的、跨浏览器的HTML5游戏。 做这个框架，主要是想发掘现代浏览器（兼及桌面和移动两类系统）的优点，。对浏览器的唯一要求是，支持画布（canvas）标签。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><hr>
+<p>参考视频: <a href="http://www.phaser.io/tutorials/making-your-first-phaser-3-game-chinese" target="_blank" rel="noopener">http://www.phaser.io/tutorials/making-your-first-phaser-3-game-chinese</a></p>
+]]></content>
+      <categories>
+        <category>web</category>
+        <category>games</category>
+      </categories>
+      <tags>
+        <tag>Computer Language</tag>
+        <tag>web</tag>
+        <tag>games</tag>
+        <tag>Phaser3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot</title>
+    <url>/2020/04/29/computerLanguage/java/beforeArchitect/springboot/</url>
+    <content><![CDATA[<h1 id="SpringBoot基础"><a href="#SpringBoot基础" class="headerlink" title="SpringBoot基础"></a>SpringBoot基础</h1><h2 id="框架介绍"><a href="#框架介绍" class="headerlink" title="框架介绍"></a>框架介绍</h2><p>SpringBoot主要解决的是在微服务架构下简化配置（有快速配置）、前后端分离、快速开发</p>
+<p>优点： </p>
+<ul>
+<li>提供了快速启动入门</li>
+<li>开箱即用、提供默认配置</li>
+<li>内嵌容器化web项目</li>
+<li>没有冗余代码生成和XML配置要求</li>
+</ul>
+<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><p>模板引擎： 如 <code>Thymeleaf</code>, <code>FreeMarker</code></p>
+<p>有嵌套和解析的过程，先加载静态页面，在静态页面上添加一些标记，模板引擎的内核会根据添加的标记动态渲染数据</p>
+<p><strong>计算向数据移动</strong></p>
+<h3 id="MVC架构思想"><a href="#MVC架构思想" class="headerlink" title="MVC架构思想"></a>MVC架构思想</h3><p>? JVM垃圾回收机制现在已经不是引入计数器的方式，改为GCroot</p>
+<p>? Spring不支持循环引用，主要是因为其自身结构问题。</p>
+<h3 id="基于SpringBoot的MVC"><a href="#基于SpringBoot的MVC" class="headerlink" title="基于SpringBoot的MVC"></a>基于SpringBoot的MVC</h3><ul>
+<li>数据的展示查询</li>
+</ul>
+<h3 id="分层解释"><a href="#分层解释" class="headerlink" title="分层解释"></a>分层解释</h3><ul>
+<li><p><code>Controller</code>层</p>
+<p>一般写业务逻辑跳转</p>
+</li>
+<li><p><code>Service</code>层</p>
+<p>业务层逻辑代码</p>
+</li>
+<li><p><code>DAO</code>层</p>
+<p>操作持久层</p>
+</li>
+</ul>
+<h3 id="各种依赖"><a href="#各种依赖" class="headerlink" title="各种依赖"></a>各种依赖</h3><h4 id="JPA-Java-Persistence-API"><a href="#JPA-Java-Persistence-API" class="headerlink" title="JPA(Java Persistence API)"></a>JPA(Java Persistence API)</h4><p>  添加依赖 <code>Spring-data-jpa</code>, 用于访问数据源的框架，可以把数据库的表映射成对象，一一对应</p>
+<h3 id="注释解说"><a href="#注释解说" class="headerlink" title="注释解说"></a>注释解说</h3><h4 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a><code>@RequestMapping</code></h4><p>请求路径</p>
+<h4 id="PathVariable-quot-key-quot"><a href="#PathVariable-quot-key-quot" class="headerlink" title="@PathVariable(&quot;key&quot;)"></a><code>@PathVariable(&quot;key&quot;)</code></h4><p>取URI中<code>key</code>对应的值</p>
+<h1 id="实践中报错记录"><a href="#实践中报错记录" class="headerlink" title="实践中报错记录"></a>实践中报错记录</h1><h2 id="下载依赖包速度过慢"><a href="#下载依赖包速度过慢" class="headerlink" title="下载依赖包速度过慢"></a>下载依赖包速度过慢</h2><p>解决方法： 配置阿里云镜像地址</p>
+<p>全局配置步骤： </p>
+<ol>
+<li>找到maven的<code>setting.xml</code>文件，若没有可以新建</li>
+<li><p>在<code>setting.xml</code>文件的<code>mirrors</code>节点下面添加子节点</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="运行成功并退出"><a href="#运行成功并退出" class="headerlink" title="运行成功并退出"></a>运行成功并退出</h2><p><code>Process finished with exit code 0</code></p>
+<p>原因： <code>Pom.xml</code>文件缺少依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="引入spring-security每次调用需要输入登录名密码"><a href="#引入spring-security每次调用需要输入登录名密码" class="headerlink" title="引入spring-security每次调用需要输入登录名密码"></a>引入<code>spring-security</code>每次调用需要输入登录名密码</h2><p>解决办法： 关闭验证</p>
+<ol>
+<li><p><code>springboot 2.0</code> 之前可通过yml配置关闭验证：</p>
+ <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">security.basic.enabled=false</span></span><br><span class="line"><span class="string">management.security.enabled=false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>springboot 2.x</code>后关闭验证</p>
+<p> <code>springboot 2.x</code> 后上述配置被废除，需要在启动类前的 <code>@SpringBootApplication</code> 注解中加入 <code>exclude</code> 属性 <code>scurityAutoConfiguration</code></p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span>(exclude = SecurityAutoConfiguration<span class="class">.<span class="keyword">class</span>)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="数据库连接报错"><a href="#数据库连接报错" class="headerlink" title="数据库连接报错"></a>数据库连接报错</h2><p>报错内容: <code>java.sql.SQLException: The server time zone value &#39;�й���׼ʱ��&#39; is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the &#39;serverTimezone&#39; configuration property) to use a more specifc time zone value if you want to utilize time zone support.</code></p>
+<p>报错原因： 数据库连接时区配置问题</p>
+<p>解决方法： 数据库配置添加时区配置 <code>serverTimezone=UTC</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">$&#123;MYSQL_USER:root&#125;</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">$&#123;MYSQL_PASSWORD:123456&#125;</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://$&#123;MYSQL_HOST:localhost&#125;:$&#123;MYSQL_PORT:3306&#125;/$&#123;MYSQL_DATABASE:dbname&#125;?serverTimezone=UTC&amp;useUnicode=true&amp;useSSL=false&amp;characterEncoding=utf8</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>参考资料：</p>
+]]></content>
+      <categories>
+        <category>framework,Springboot</category>
+      </categories>
+      <tags>
+        <tag>Computer Language</tag>
+        <tag>framework</tag>
+        <tag>Springboot</tag>
       </tags>
   </entry>
   <entry>

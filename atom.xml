@@ -163,9 +163,9 @@
   </entry>
   
   <entry>
-    <title>Visio</title>
-    <link href="http://garden.aezo.cn/2020/02/26/others/visio/"/>
-    <id>http://garden.aezo.cn/2020/02/26/others/visio/</id>
+    <title>UML</title>
+    <link href="http://garden.aezo.cn/2020/02/26/others/UML/starUml/"/>
+    <id>http://garden.aezo.cn/2020/02/26/others/UML/starUml/</id>
     <published>2020-02-26T06:26:00.000Z</published>
     <updated>2020-07-10T14:28:07.647Z</updated>
     
@@ -188,9 +188,9 @@
   </entry>
   
   <entry>
-    <title>UML</title>
-    <link href="http://garden.aezo.cn/2020/02/26/others/UML/starUml/"/>
-    <id>http://garden.aezo.cn/2020/02/26/others/UML/starUml/</id>
+    <title>Visio</title>
+    <link href="http://garden.aezo.cn/2020/02/26/others/visio/"/>
+    <id>http://garden.aezo.cn/2020/02/26/others/visio/</id>
     <published>2020-02-26T06:26:00.000Z</published>
     <updated>2020-07-10T14:28:07.647Z</updated>
     
@@ -540,39 +540,6 @@
   </entry>
   
   <entry>
-    <title>Phaser3</title>
-    <link href="http://garden.aezo.cn/2019/06/22/computerLanguage/games/phaser/phaser3/"/>
-    <id>http://garden.aezo.cn/2019/06/22/computerLanguage/games/phaser/phaser3/</id>
-    <published>2019-06-22T06:47:36.000Z</published>
-    <updated>2020-07-10T14:28:07.639Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="什么是Phaser"><a href="#什么是Phaser" class="headerlink" title="什么是Phaser"></a>什么是Phaser</h2><p>Phaser是一个HTML5游戏框架，它的目的是辅助开发者真正快速地制作强大的、跨浏览器的HTML5游戏。 做这个框架，主要是想发掘现代浏览器（兼及桌面和移动两类系统）的优点，。对浏览器的唯一要求是，支持画布（canvas）标签。</p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><hr><p>参考视频: <a href="http://www.phaser.io/tutorials/making-your-first-phaser-3-game-chinese" target="_blank" rel="noopener">http://www.phaser.io/tutorials/making-your-first-phaser-3-game-chinese</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;什么是Phaser&quot;&gt;&lt;a href=&quot;#什么是Phaser&quot; class=&quot;headerlink&quot; title=&quot;什么是Phaser&quot;&gt;&lt;/a&gt;什么是Phaser&lt;/h2&gt;&lt;p&gt;Phaser是一个HTML5游戏框架，它的目的是辅助开发者真正快速地制作强大的、跨浏
-      
-    
-    </summary>
-    
-      <category term="web" scheme="http://garden.aezo.cn/categories/web/"/>
-    
-      <category term="games" scheme="http://garden.aezo.cn/categories/web/games/"/>
-    
-    
-      <category term="Computer Language" scheme="http://garden.aezo.cn/tags/Computer-Language/"/>
-    
-      <category term="web" scheme="http://garden.aezo.cn/tags/web/"/>
-    
-      <category term="games" scheme="http://garden.aezo.cn/tags/games/"/>
-    
-      <category term="Phaser3" scheme="http://garden.aezo.cn/tags/Phaser3/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Vue</title>
     <link href="http://garden.aezo.cn/2019/06/22/computerLanguage/web/vue/"/>
     <id>http://garden.aezo.cn/2019/06/22/computerLanguage/web/vue/</id>
@@ -600,6 +567,34 @@
       <category term="web" scheme="http://garden.aezo.cn/tags/web/"/>
     
       <category term="vue" scheme="http://garden.aezo.cn/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UI</title>
+    <link href="http://garden.aezo.cn/2019/06/22/computerLanguage/UI/UI%E5%85%A5%E9%97%A8/"/>
+    <id>http://garden.aezo.cn/2019/06/22/computerLanguage/UI/UI入门/</id>
+    <published>2019-06-22T06:47:36.000Z</published>
+    <updated>2020-07-10T14:28:07.637Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="UI入门"><a href="#UI入门" class="headerlink" title="UI入门"></a>UI入门</h1><p>UI设计的合理进阶： 联系设计 + 联系产品</p><h2 id="视觉层次"><a href="#视觉层次" class="headerlink" title="视觉层次"></a>视觉层次</h2><h3 id="版面层级"><a href="#版面层级" class="headerlink" title="版面层级"></a>版面层级</h3><p>页面层级： 图片 &gt; 图标 &gt; 文字</p><h3 id="板块凸显"><a href="#板块凸显" class="headerlink" title="板块凸显"></a>板块凸显</h3><ol><li>卡片式设计（凸显板块）</li></ol><p>难点： 合适的阴影设计——弥散(使用PS进行操作)</p><p>PS操作重点：</p><ul><li>创建圆角矩形</li><li>复制图层作为阴影层，缩小至90%,适当调整颜色</li><li>阴影层板块： 属性–&gt;蒙版–&gt;羽化30像素(可自行调节)</li><li>整个阴影层板块稍微下移，制造阴影效果</li></ul><ol start="2"><li><p>增加角标(凸显细小版块)</p></li><li><p>增加标签(凸显细节)</p></li></ol><p>使用PS设计小标签：</p><ul><li>文字大小基本为24像素，中粗黑字体</li><li>左右间距一般大于上下边距，使标签设计有呼吸感</li></ul><h3 id="文字层级"><a href="#文字层级" class="headerlink" title="文字层级"></a>文字层级</h3><p>字重、颜色、特殊字体包</p><hr><p>参考视频: <a href="https://huke88.com/course/12944.html" target="_blank" rel="noopener">https://huke88.com/course/12944.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;UI入门&quot;&gt;&lt;a href=&quot;#UI入门&quot; class=&quot;headerlink&quot; title=&quot;UI入门&quot;&gt;&lt;/a&gt;UI入门&lt;/h1&gt;&lt;p&gt;UI设计的合理进阶： 联系设计 + 联系产品&lt;/p&gt;
+&lt;h2 id=&quot;视觉层次&quot;&gt;&lt;a href=&quot;#视觉层次&quot; class
+      
+    
+    </summary>
+    
+      <category term="UI" scheme="http://garden.aezo.cn/categories/UI/"/>
+    
+    
+      <category term="Computer Language" scheme="http://garden.aezo.cn/tags/Computer-Language/"/>
+    
+      <category term="UI" scheme="http://garden.aezo.cn/tags/UI/"/>
     
   </entry>
   
