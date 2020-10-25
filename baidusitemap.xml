@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://garden.aezo.cn/2020/10/25/computerLanguage/java/beforeArchitect/JDBC/</loc>
+    <lastmod>2020-10-25</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2020/10/25/computerLanguage/database/database/</loc>
+    <lastmod>2020-10-25</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2019/06/22/computerLanguage/UI/UI%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2020-10-24</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2020/08/18/computerLanguage/algorithm/dataStructure&algorithm/</loc>
+    <lastmod>2020-08-25</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2020/08/18/computerLanguage/java/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA/</loc>
+    <lastmod>2020-08-22</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2020/08/17/computerLanguage/java/beforeArchitect/SpringMVC/</loc>
+    <lastmod>2020-08-17</lastmod>
+  </url>
+  <url>
     <loc>http://garden.aezo.cn/2020/08/14/naturalLanguage/%E6%97%A5%E8%AF%ADCATTI%E4%B8%89%E7%BA%A7%E7%AC%94%E8%AF%91/</loc>
     <lastmod>2020-08-15</lastmod>
   </url>
@@ -25,11 +49,11 @@
     <lastmod>2020-08-02</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2020/02/26/others/visio/</loc>
+    <loc>http://garden.aezo.cn/2019/05/12/others/hello-world/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2019/05/12/others/hello-world/</loc>
+    <loc>http://garden.aezo.cn/2020/02/26/others/visio/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
@@ -77,11 +101,11 @@
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2019/10/23/computerLanguage/frameworks/ofbiz/</loc>
+    <loc>http://garden.aezo.cn/2019/10/13/computerLanguage/games/layaAir/layaAir/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2019/10/13/computerLanguage/games/layaAir/layaAir/</loc>
+    <loc>http://garden.aezo.cn/2019/10/23/computerLanguage/frameworks/ofbiz/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
@@ -90,10 +114,6 @@
   </url>
   <url>
     <loc>http://garden.aezo.cn/2020/02/01/computerLanguage/Nginx/Nginx/</loc>
-    <lastmod>2020-07-10</lastmod>
-  </url>
-  <url>
-    <loc>http://garden.aezo.cn/2019/06/22/computerLanguage/UI/UI%E5%85%A5%E9%97%A8/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
