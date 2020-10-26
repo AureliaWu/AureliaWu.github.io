@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://garden.aezo.cn/2020/10/25/computerLanguage/java/beforeArchitect/JDBC/</loc>
-    <lastmod>2020-10-25</lastmod>
+    <lastmod>2020-10-26</lastmod>
   </url>
   <url>
     <loc>http://garden.aezo.cn/2020/10/25/computerLanguage/database/database/</loc>
@@ -49,7 +49,7 @@
     <lastmod>2020-08-02</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2019/05/12/others/hello-world/</loc>
+    <loc>http://garden.aezo.cn/2020/02/26/others/UML/starUml/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
@@ -57,15 +57,11 @@
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2020/02/26/others/UML/starUml/</loc>
+    <loc>http://garden.aezo.cn/2019/05/12/others/hello-world/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
     <loc>http://garden.aezo.cn/2019/10/08/naturalLanguage/DaiLanguage/Dai/</loc>
-    <lastmod>2020-07-10</lastmod>
-  </url>
-  <url>
-    <loc>http://garden.aezo.cn/2019/06/22/computerLanguage/web/vue/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
@@ -77,11 +73,19 @@
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2019/10/13/computerLanguage/web/css/</loc>
+    <loc>http://garden.aezo.cn/2019/06/22/computerLanguage/web/vue/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
     <loc>http://garden.aezo.cn/2020/03/21/computerLanguage/web/canvas/</loc>
+    <lastmod>2020-07-10</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2019/10/13/computerLanguage/web/css/</loc>
+    <lastmod>2020-07-10</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2020/02/04/computerLanguage/miniProgram/wechat_miniprogram/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
@@ -90,10 +94,6 @@
   </url>
   <url>
     <loc>http://garden.aezo.cn/2019/06/13/computerLanguage/microservice/docker/</loc>
-    <lastmod>2020-07-10</lastmod>
-  </url>
-  <url>
-    <loc>http://garden.aezo.cn/2020/02/04/computerLanguage/miniProgram/wechat_miniprogram/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
