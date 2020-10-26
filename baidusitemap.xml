@@ -49,10 +49,6 @@
     <lastmod>2020-08-02</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2020/02/26/others/UML/starUml/</loc>
-    <lastmod>2020-07-10</lastmod>
-  </url>
-  <url>
     <loc>http://garden.aezo.cn/2020/02/26/others/visio/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
@@ -61,7 +57,15 @@
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
+    <loc>http://garden.aezo.cn/2020/02/26/others/UML/starUml/</loc>
+    <lastmod>2020-07-10</lastmod>
+  </url>
+  <url>
     <loc>http://garden.aezo.cn/2019/10/08/naturalLanguage/DaiLanguage/Dai/</loc>
+    <lastmod>2020-07-10</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2019/06/22/computerLanguage/web/vue/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
@@ -73,10 +77,6 @@
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2019/06/22/computerLanguage/web/vue/</loc>
-    <lastmod>2020-07-10</lastmod>
-  </url>
-  <url>
     <loc>http://garden.aezo.cn/2020/03/21/computerLanguage/web/canvas/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
@@ -85,19 +85,15 @@
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2020/02/04/computerLanguage/miniProgram/wechat_miniprogram/</loc>
-    <lastmod>2020-07-10</lastmod>
-  </url>
-  <url>
     <loc>http://garden.aezo.cn/2019/06/13/computerLanguage/microservice/microservice/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2019/06/13/computerLanguage/microservice/docker/</loc>
+    <loc>http://garden.aezo.cn/2020/02/04/computerLanguage/miniProgram/wechat_miniprogram/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
-    <loc>http://garden.aezo.cn/2019/06/22/computerLanguage/games/phaser/phaser3/</loc>
+    <loc>http://garden.aezo.cn/2019/06/13/computerLanguage/microservice/docker/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
@@ -106,6 +102,10 @@
   </url>
   <url>
     <loc>http://garden.aezo.cn/2019/10/23/computerLanguage/frameworks/ofbiz/</loc>
+    <lastmod>2020-07-10</lastmod>
+  </url>
+  <url>
+    <loc>http://garden.aezo.cn/2019/06/22/computerLanguage/games/phaser/phaser3/</loc>
     <lastmod>2020-07-10</lastmod>
   </url>
   <url>
