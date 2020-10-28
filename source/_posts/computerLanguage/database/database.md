@@ -157,3 +157,60 @@ Oracle支持以下五类完整型约束：
 第三范式就是属性不依赖于其他非主属性
 
 第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关
+
+# DBUtil及数据库连接池
+
+## DBUtil
+
+Commons DbUtils: JDBC Utility Component
+
+Apache封装的JDBC工具组件
+
+## 数据库连接池
+ 
+数据库连接池的目的是为了减少频繁开关连接的时间，提高整个系统的响应能力，数据库连接池应该具备几个属性值：
+
+1. 初始大小
+2. 每次扩容的大小
+3. 连接池的最大个数
+4. 空闲连接的死亡时间
+   
+各种数据库连接池：
+
+- DBCP
+- C3P0
+- Druid
+- hikariCP
+  
+### `DBCP`
+
+Apache提供的数据库连接池，目前用的比较少
+
+### `C3P0`
+
+开源的数据库连接池
+
+1. 下载Jar包并导入项目中
+
+2. 使用步骤
+   
+   ```java
+
+  import com.mchange.v2.c3p0.*;
+    
+  ...
+  // 加载mysql驱动
+  ComboPooledDataSource cpds = new ComboPooledDataSource();
+  cpds.setDriverClass( "com.mysql.jdbc.Driver" );
+
+  // 设置URL、用户名、密码         
+  cpds.setJdbcUrl( "jdbc:postgresql://localhost/testdb" );
+  cpds.setUser("dbuser"); 
+  cpds.setPassword("dbpassword");   
+   ```
+
+   `c3p0`若要通过配置文件进行参数配置，则配置文件必须放置在根目录，且文件名为`c3p0.properties`(properties文件)或`c3p0-config.xml`(xml文件)
+
+**JDBC4之前是必须要填写驱动名称的，但是之后的版本不需要填写**
+
+### `druid`
