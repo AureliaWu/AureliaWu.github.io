@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://garden.aezo.cn/2020/10/31/computerLanguage/database/mysql/</loc>
+    
+    <lastmod>2020-11-01T14:36:10.289Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://garden.aezo.cn/2020/10/25/computerLanguage/database/database/</loc>
     
-    <lastmod>2020-10-28T14:40:51.639Z</lastmod>
+    <lastmod>2020-10-31T09:21:50.099Z</lastmod>
     
   </url>
   
@@ -149,14 +156,14 @@
   </url>
   
   <url>
-    <loc>http://garden.aezo.cn/2020/02/26/others/UML/starUml/</loc>
+    <loc>http://garden.aezo.cn/about/index.html</loc>
     
     <lastmod>2020-07-10T14:28:07.647Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://garden.aezo.cn/about/index.html</loc>
+    <loc>http://garden.aezo.cn/2020/02/26/others/UML/starUml/</loc>
     
     <lastmod>2020-07-10T14:28:07.647Z</lastmod>
     
@@ -166,13 +173,6 @@
     <loc>http://garden.aezo.cn/2019/10/08/naturalLanguage/DaiLanguage/Dai/</loc>
     
     <lastmod>2020-07-10T14:28:07.646Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://garden.aezo.cn/2019/08/25/computerLanguage/web/uni-app/</loc>
-    
-    <lastmod>2020-07-10T14:28:07.645Z</lastmod>
     
   </url>
   
@@ -191,9 +191,9 @@
   </url>
   
   <url>
-    <loc>http://garden.aezo.cn/2020/03/21/computerLanguage/web/canvas/</loc>
+    <loc>http://garden.aezo.cn/2019/08/25/computerLanguage/web/uni-app/</loc>
     
-    <lastmod>2020-07-10T14:28:07.644Z</lastmod>
+    <lastmod>2020-07-10T14:28:07.645Z</lastmod>
     
   </url>
   
@@ -205,7 +205,14 @@
   </url>
   
   <url>
-    <loc>http://garden.aezo.cn/2020/02/04/computerLanguage/miniProgram/wechat_miniprogram/</loc>
+    <loc>http://garden.aezo.cn/2020/03/21/computerLanguage/web/canvas/</loc>
+    
+    <lastmod>2020-07-10T14:28:07.644Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://garden.aezo.cn/2019/06/13/computerLanguage/microservice/microservice/</loc>
     
     <lastmod>2020-07-10T14:28:07.643Z</lastmod>
     
@@ -219,7 +226,7 @@
   </url>
   
   <url>
-    <loc>http://garden.aezo.cn/2019/06/13/computerLanguage/microservice/microservice/</loc>
+    <loc>http://garden.aezo.cn/2020/02/04/computerLanguage/miniProgram/wechat_miniprogram/</loc>
     
     <lastmod>2020-07-10T14:28:07.643Z</lastmod>
     
@@ -233,14 +240,14 @@
   </url>
   
   <url>
-    <loc>http://garden.aezo.cn/2019/10/13/computerLanguage/games/layaAir/layaAir/</loc>
+    <loc>http://garden.aezo.cn/2019/10/23/computerLanguage/frameworks/ofbiz/</loc>
     
     <lastmod>2020-07-10T14:28:07.639Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://garden.aezo.cn/2019/10/23/computerLanguage/frameworks/ofbiz/</loc>
+    <loc>http://garden.aezo.cn/2019/10/13/computerLanguage/games/layaAir/layaAir/</loc>
     
     <lastmod>2020-07-10T14:28:07.639Z</lastmod>
     
