@@ -271,3 +271,117 @@ Binlog会记录所有的逻辑，并且采用追加写的方式，一般在企�
 
 1. 找到最近一次的全量备份数据
 2. 从备份的时间点开始，将备份的binlog取出来，重放到要恢复的那个时刻
+
+## MySQL执行计划
+
+使用`explain` + SQL语句来模拟优化器执行SQL查询语句，从而知道MySQL是如何处理SQL语句的
+
+### 执行计划中包含的信息（属性）
+
+1. id
+   
+   select查询的序列号包含一组数字，表示查询中执行select子句或者操作表的顺序
+
+   id号分为三种情况：
+
+      - 如果id相同，那么执行顺序从上到下
+
+      - 如果id不同，如果是子查询，id的序号会递增，id值越大优先级越高，越先被执行
+  
+      - id相同和不同的同时存在，相同的可以认为是一组，从上往下顺序执行。在所有组中，id值越大优先级越高，越先执行
+  
+2. select_type
+   
+   `SIMPLE`: 简单查询
+
+   `PRIMARY`: 最外层查询
+
+   `UNION`: 若第二个语句在union之后则标记为union
+
+   `DEPENDENT UNION`: 跟union关联，外层查询依赖内层查询结果
+
+   `UNION RESULT`: 从union表中获取结果select
+
+   `SUBQUERY`: 子查询
+
+   `DEPENDENT SUBQUERY`: 子查询是结果集合是D`EPENDENT SUBQUERY`,单个值是`SUBQUERY`
+
+   `DERIVED`: from子句中出现的子查询，也叫做衍生类
+
+   `UNCACHEABLE SUBQUERY`: 表示使用子表查询结果不能被缓存
+
+   `UNCACHEABLE UNION`: 表示union的查询结果不能被缓存
+
+3. table
+   
+   对应正在访问哪一个表、表名或者别名，可能是临时表挥着union合并结果集
+
+   - 如果是具体表名，则表明从实际的物理表中获取数据，当然也可以是表的别名
+   - 表名是drivedN的形式，表示使用了id为N的查询产生的衍生表，当有union result的时候，表名是union n1,n2等的形式，n1,n2表示参与union的id
+  
+4. partitions
+   
+   分区
+
+5. type
+   
+   访问类型，表示当前sql语句执行时是以何种方式访问我们的数据，访问类型有很多，效率从高到低分别是：
+
+   `sysytem > const > eq_ref > ref > fulltext > ref_of_null > index_merge > unique_subquery > index_subquery > range > index > ALL`
+   
+   一般情况下，得保证查询至少达到`range`级别，最好能达到`ref`
+
+   - ALL: 全表扫描，一般情况下，出现这种sql语句而且数据量比较大的话，那么久需要进行优化
+  
+   - index： 全索引扫描，比All效率好。主要两种情况，一种是当前的查询是覆盖索引，即我们需要的数据在索引中就可以索取；第二种者是使用了索引进行排序，这样就避免数据的重排序
+  
+   - range： 表示利用索引联合查询的时候限制了范围，在指定范围内进行查询
+  
+   - index_subquery: 利用索引关联子查询，不需要再扫描全表
+
+   - unique_subquery
+   - index_merge
+   - ref_of_null
+   - fulltext
+   - ref
+     使用了非唯一性索引进行查找
+
+   - eq_ref
+   - const
+    这个表至多有一个匹配行
+
+   - sysytem
+   
+    表里面只有一行记录（等于系统表）
+
+6. possible_keys
+   
+   显示可能会用到的索引
+
+7. key
+   
+   实际使用的索引，如果为null，则没有使用索引，查询中若使用了覆盖索引，则该索引和查询的select字段重叠
+
+8. key_len
+   
+   索引中使用的字节数
+
+9. ref
+    
+    显示索引的哪一列被使用了，如果可能的话，是一个常数
+
+10. rows
+    
+    根据表的统计信息及索引使用情况，大致估算出找出所需记录读取的行数，此参数很重要，直接反映的sql找了多少数据，在完成目的的情况下，越少越好
+
+11. extra
+    
+    包含额外的信息
+
+## MySQL的锁机制
+
+
+
+    
+   
+
