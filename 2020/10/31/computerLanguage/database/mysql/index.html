@@ -299,7 +299,91 @@
 <li>找到最近一次的全量备份数据</li>
 <li>从备份的时间点开始，将备份的binlog取出来，重放到要恢复的那个时刻</li>
 </ol>
-
+<h2 id="MySQL执行计划"><a href="#MySQL执行计划" class="headerlink" title="MySQL执行计划"></a>MySQL执行计划</h2><p>使用<code>explain</code> + SQL语句来模拟优化器执行SQL查询语句，从而知道MySQL是如何处理SQL语句的</p>
+<h3 id="执行计划中包含的信息（属性）"><a href="#执行计划中包含的信息（属性）" class="headerlink" title="执行计划中包含的信息（属性）"></a>执行计划中包含的信息（属性）</h3><ol>
+<li><p>id</p>
+<p>select查询的序列号包含一组数字，表示查询中执行select子句或者操作表的顺序</p>
+<p>id号分为三种情况：</p>
+<ul>
+<li><p>如果id相同，那么执行顺序从上到下</p>
+</li>
+<li><p>如果id不同，如果是子查询，id的序号会递增，id值越大优先级越高，越先被执行</p>
+</li>
+<li><p>id相同和不同的同时存在，相同的可以认为是一组，从上往下顺序执行。在所有组中，id值越大优先级越高，越先执行</p>
+</li>
+</ul>
+</li>
+<li><p>select_type</p>
+<p><code>SIMPLE</code>: 简单查询</p>
+<p><code>PRIMARY</code>: 最外层查询</p>
+<p><code>UNION</code>: 若第二个语句在union之后则标记为union</p>
+<p><code>DEPENDENT UNION</code>: 跟union关联，外层查询依赖内层查询结果</p>
+<p><code>UNION RESULT</code>: 从union表中获取结果select</p>
+<p><code>SUBQUERY</code>: 子查询</p>
+<p><code>DEPENDENT SUBQUERY</code>: 子查询是结果集合是D<code>EPENDENT SUBQUERY</code>,单个值是<code>SUBQUERY</code></p>
+<p><code>DERIVED</code>: from子句中出现的子查询，也叫做衍生类</p>
+<p><code>UNCACHEABLE SUBQUERY</code>: 表示使用子表查询结果不能被缓存</p>
+<p><code>UNCACHEABLE UNION</code>: 表示union的查询结果不能被缓存</p>
+</li>
+<li><p>table</p>
+<p>对应正在访问哪一个表、表名或者别名，可能是临时表挥着union合并结果集</p>
+<ul>
+<li>如果是具体表名，则表明从实际的物理表中获取数据，当然也可以是表的别名</li>
+<li>表名是drivedN的形式，表示使用了id为N的查询产生的衍生表，当有union result的时候，表名是union n1,n2等的形式，n1,n2表示参与union的id</li>
+</ul>
+</li>
+<li><p>partitions</p>
+<p>分区</p>
+</li>
+<li><p>type</p>
+<p>访问类型，表示当前sql语句执行时是以何种方式访问我们的数据，访问类型有很多，效率从高到低分别是：</p>
+<p><code>sysytem &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_of_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL</code></p>
+<p>一般情况下，得保证查询至少达到<code>range</code>级别，最好能达到<code>ref</code></p>
+<ul>
+<li><p>ALL: 全表扫描，一般情况下，出现这种sql语句而且数据量比较大的话，那么久需要进行优化</p>
+</li>
+<li><p>index： 全索引扫描，比All效率好。主要两种情况，一种是当前的查询是覆盖索引，即我们需要的数据在索引中就可以索取；第二种者是使用了索引进行排序，这样就避免数据的重排序</p>
+</li>
+<li><p>range： 表示利用索引联合查询的时候限制了范围，在指定范围内进行查询</p>
+</li>
+<li><p>index_subquery: 利用索引关联子查询，不需要再扫描全表</p>
+</li>
+<li><p>unique_subquery</p>
+</li>
+<li>index_merge</li>
+<li>ref_of_null</li>
+<li>fulltext</li>
+<li><p>ref<br>使用了非唯一性索引进行查找</p>
+</li>
+<li><p>eq_ref</p>
+</li>
+<li><p>const<br>这个表至多有一个匹配行</p>
+</li>
+<li><p>sysytem</p>
+<p>表里面只有一行记录（等于系统表）</p>
+</li>
+</ul>
+</li>
+<li><p>possible_keys</p>
+<p>显示可能会用到的索引</p>
+</li>
+<li><p>key</p>
+<p>实际使用的索引，如果为null，则没有使用索引，查询中若使用了覆盖索引，则该索引和查询的select字段重叠</p>
+</li>
+<li><p>key_len</p>
+<p>索引中使用的字节数</p>
+</li>
+<li><p>ref</p>
+<p> 显示索引的哪一列被使用了，如果可能的话，是一个常数</p>
+</li>
+<li><p>rows</p>
+<p>根据表的统计信息及索引使用情况，大致估算出找出所需记录读取的行数，此参数很重要，直接反映的sql找了多少数据，在完成目的的情况下，越少越好</p>
+</li>
+<li><p>extra</p>
+<p>包含额外的信息</p>
+</li>
+</ol>
+<h2 id="MySQL的锁机制"><a href="#MySQL的锁机制" class="headerlink" title="MySQL的锁机制"></a>MySQL的锁机制</h2>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
@@ -354,7 +438,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL"><span class="toc-number">1.</span> <span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础知识"><span class="toc-number">1.1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#局部性原理"><span class="toc-number">1.1.1.</span> <span class="toc-text">局部性原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘预读"><span class="toc-number">1.1.2.</span> <span class="toc-text">磁盘预读</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL索引"><span class="toc-number">1.2.</span> <span class="toc-text">MySQL索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引的分类"><span class="toc-number">1.2.1.</span> <span class="toc-text">索引的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引维护"><span class="toc-number">1.2.2.</span> <span class="toc-text">索引维护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL整体结构"><span class="toc-number">1.3.</span> <span class="toc-text">MySQL整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试题"><span class="toc-number">1.4.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树"><span class="toc-number">1.4.1.</span> <span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B树"><span class="toc-number">1.4.2.</span> <span class="toc-text">B树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树"><span class="toc-number">1.4.3.</span> <span class="toc-text">B+树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL存储引擎"><span class="toc-number">1.5.</span> <span class="toc-text">MySQL存储引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL架构"><span class="toc-number">1.6.</span> <span class="toc-text">MySQL架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL日志"><span class="toc-number">1.7.</span> <span class="toc-text">MySQL日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redo日志-——-InnoDB存储引擎的日志文件"><span class="toc-number">1.7.1.</span> <span class="toc-text">Redo日志 —— InnoDB存储引擎的日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Undo-log"><span class="toc-number">1.7.2.</span> <span class="toc-text">Undo log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Binlog-——-服务端的日志文件"><span class="toc-number">1.7.3.</span> <span class="toc-text">Binlog —— 服务端的日志文件</span></a></li></ol></li></ol></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL"><span class="toc-number">1.</span> <span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础知识"><span class="toc-number">1.1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#局部性原理"><span class="toc-number">1.1.1.</span> <span class="toc-text">局部性原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘预读"><span class="toc-number">1.1.2.</span> <span class="toc-text">磁盘预读</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL索引"><span class="toc-number">1.2.</span> <span class="toc-text">MySQL索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引的分类"><span class="toc-number">1.2.1.</span> <span class="toc-text">索引的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引维护"><span class="toc-number">1.2.2.</span> <span class="toc-text">索引维护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL整体结构"><span class="toc-number">1.3.</span> <span class="toc-text">MySQL整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试题"><span class="toc-number">1.4.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树"><span class="toc-number">1.4.1.</span> <span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B树"><span class="toc-number">1.4.2.</span> <span class="toc-text">B树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树"><span class="toc-number">1.4.3.</span> <span class="toc-text">B+树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL存储引擎"><span class="toc-number">1.5.</span> <span class="toc-text">MySQL存储引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL架构"><span class="toc-number">1.6.</span> <span class="toc-text">MySQL架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL日志"><span class="toc-number">1.7.</span> <span class="toc-text">MySQL日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redo日志-——-InnoDB存储引擎的日志文件"><span class="toc-number">1.7.1.</span> <span class="toc-text">Redo日志 —— InnoDB存储引擎的日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Undo-log"><span class="toc-number">1.7.2.</span> <span class="toc-text">Undo log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Binlog-——-服务端的日志文件"><span class="toc-number">1.7.3.</span> <span class="toc-text">Binlog —— 服务端的日志文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL执行计划"><span class="toc-number">1.8.</span> <span class="toc-text">MySQL执行计划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行计划中包含的信息（属性）"><span class="toc-number">1.8.1.</span> <span class="toc-text">执行计划中包含的信息（属性）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的锁机制"><span class="toc-number">1.9.</span> <span class="toc-text">MySQL的锁机制</span></a></li></ol></li></ol>	
         </div>
     
 </div>
