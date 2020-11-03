@@ -383,7 +383,76 @@
 <p>包含额外的信息</p>
 </li>
 </ol>
-<h2 id="MySQL的锁机制"><a href="#MySQL的锁机制" class="headerlink" title="MySQL的锁机制"></a>MySQL的锁机制</h2>
+<h2 id="MySQL的锁机制"><a href="#MySQL的锁机制" class="headerlink" title="MySQL的锁机制"></a>MySQL的锁机制</h2><p><strong>锁是计算机协调多个进程或线程并发访问某一资源的机制。</strong></p>
+<p>不同的存储引擎支持不同的锁机制。</p>
+<ul>
+<li><code>MyISAM</code>和<code>MERMORY</code>存储引擎采用的是表级锁(<code>table-level locking</code>)</li>
+<li><code>InnoDB</code>存储引擎支持行级锁(<code>row-level locking</code>)，也支持表级锁，但默认情况下采用行级锁</li>
+</ul>
+<p><strong>表级锁</strong>： 开销小，加锁快；不会出现死锁；锁定力度大，发生锁冲突的概率最高，并发度最低</p>
+<p><strong>行级锁</strong>：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高</p>
+<p>仅从锁的角度来说，表级锁更适合以查询为主，只有少量按索引条件更新数据的应用，如web应用；行级锁更适合于有大量按索引条件并发更新少量不同数据，同时又有并发查询的应用，如一些在线事务处理(<code>OLTP</code>)系统</p>
+<p><code>OLTP</code>: <code>ONLINE TRANSIATION PROCESS</code> 联机事务处理</p>
+<p><code>OLAP</code>: <code>ONLINE ANALYSIS PROCESS</code> 联机分析系统 </p>
+<h3 id="MyISAM表锁"><a href="#MyISAM表锁" class="headerlink" title="MyISAM表锁"></a>MyISAM表锁</h3><p>MySQL的表级锁有两种模式： <strong>表共享读锁(Table Read Lock)</strong>、<strong>表独占写锁(Table Write Lock)</strong></p>
+<p>对MyISAM表的读操作，不会阻塞其他用户对同一张表的读请求，但会阻塞对同一表的写请求；对MyISAM表的写操作，则会阻塞其他用户对同一表的读和写操作；MyISAM表的读操作与写操作之间、以及写操作之间是串行的</p>
+<h4 id="MyISAM写阻塞读"><a href="#MyISAM写阻塞读" class="headerlink" title="MyISAM写阻塞读"></a>MyISAM写阻塞读</h4><p>当一个线程获得对一个表的写锁之后，只有持有锁的线程可以对表进行更新操作。其他线程的读写操作都会等待，直到锁释放为止。</p>
+<p><code>lock table xxx write;</code>（锁表语句，给表xx加写锁）</p>
+<p>…执行一些操作…</p>
+<p><code>unlock tables;</code>(释放锁)</p>
+<h4 id="MyISAM读阻塞写"><a href="#MyISAM读阻塞写" class="headerlink" title="MyISAM读阻塞写"></a>MyISAM读阻塞写</h4><p>一个session使用<code>lock table</code>给表加读锁，这个session可以锁定表中的记录，但更新和访问其他表都会提示错误，同时另一个session可以查询表中的记录，但更新就会出现锁等待。</p>
+<p><code>lock table xxx read;</code> （锁表语句，给表加读锁）</p>
+<p><code>unlock tables;</code>（释放锁）</p>
+<p><strong>注意：</strong> MyISAM在执行查询语句之前，会自动给涉及的所有表加读锁，在执行更新操作前，会自动给涉及的表加写锁，这个过程并不需要用户干预，因此用户一般不需要使用命令来显示加锁。</p>
+<h3 id="InnoDB锁"><a href="#InnoDB锁" class="headerlink" title="InnoDB锁"></a>InnoDB锁</h3><ol>
+<li>事务及其ACID属性</li>
+</ol>
+<p>事务是由一组SQL语句组成的逻辑处理单元，事务具有四属性，通常称为事务的ACID属性。</p>
+<p>原子性(<code>Actomicity</code>): 事务是一个原子操作单位，其对数据的修改，要么全都执行，要么全都不执行</p>
+<p>一致性(<code>Consistent</code>): 在事务开始和完成时，数据都必须保持一致状态</p>
+<p>隔离性(<code>Isolation</code>): 数据库系统提供一定的隔离机制，保证事务在不受外部并发操作影响的“独立”环境执行</p>
+<p>持久性(<code>Durable</code>): 事务完成之后，它对于数据的修改是永久性的，即使出现系统故障也能够保持</p>
+<ol start="2">
+<li><p>并发事务带来的问题</p>
+<p>相对于串行处理来说，并发事务处理能力大大增加数据库资源的利用率，提高数据库系统的事务吞吐量，从而可以支持更多用户的并发操作，但与此同时会带来一下问题：</p>
+<ul>
+<li><strong>脏读</strong>： 一个事务正在对一条记录做修改，在这个事务提交前，这条记录的数据就处于不一致状态；这时，另一个事务也来读取同一条记录，如果不加控制，第二个事务读取了这些“脏”数据，并据此做进一步的处理，就会产生未提交的数据依赖关系，这种现象被形象地叫做脏读</li>
+<li><strong>不可重复读</strong>： 一个事务正在读取某些已经发生了改变或某些记录已经被删除了!这种现象叫做“不可重复读”</li>
+<li><strong>幻读</strong>： 一个事务按相同的查询条件重新读取以前检所过的数据，却发现其他事务插入了满足其条件的新数据，这种现象就称为”幻读“</li>
+</ul>
+</li>
+</ol>
+<p>以上出现的问题都是数据库读一致性的问题，可以通过事务的隔离机制来进行保证</p>
+<ol start="3">
+<li><p>InnoDB的行锁模式及加锁情况</p>
+<p><strong>共享锁(s)</strong>: 又称读锁。允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁。若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能在对A加S锁，而不能加X锁，知道T释放A上的S锁。这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何改动</p>
+<p><strong>排它锁(x)</strong>: 又称写锁。允许获取排他锁的事务更新数据，阻止其他事务取得相同的数据集 共享读锁和排他写锁。若事务T对数据对象A加上X锁，事务T可以读A也可以修改A，其他事务不能再对A加任何锁，直到T释放A上的锁</p>
+<p>MySQL InnoDB引擎默认的修改数据语句：<code>update</code>,<code>delete</code>,<code>insert</code>都会自动给涉及到的数据加上排他锁，select语句默认不会加任何类型锁。如果加排他锁可以使用<code>select ... for upadte;</code>语句，加共享锁可以使用<code>select ... lock in share mode;</code>语句。所以加排他锁的数据行在其他事务中是不能修改数据的，也不能通过<code>for update</code>和<code>lock in share mode</code>锁的方式查询数据，但可以直接通过<code>select ... from ...</code>查询数据，因为普通查询没有任何锁机制</p>
+</li>
+</ol>
+<h4 id="InnoDB行锁实现方式"><a href="#InnoDB行锁实现方式" class="headerlink" title="InnoDB行锁实现方式"></a>InnoDB行锁实现方式</h4><p>给索引上的索引加说来实现行锁。这一点上MySQL与Oracle不同，后者是通过在数据块中对相应数据行加锁来实现的。InnoDB这种行锁实现特点意味着： <strong>只有通过索引条件检索数据，InnoDB才使用行级锁，否则，InnoDB将使用表锁</strong></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>对于MyISAM的表锁：</p>
+<ol>
+<li>共享读锁(s)之间是兼容的，但共享读锁(s)与排他写锁(X)之间，以及排他写锁(X)之间是互斥的，也就是说读和写是串行的。</li>
+<li>在一定条件下，MyISAM允许查询和插入并发执行，我们可以利用这一点来解决应用中对同一表查询和超如的锁争用问题</li>
+<li>MyISAM默认的锁调度机制是写优先，但这不一定适合所有应用，用户可以通过设置<code>LOW_PRIORITY_UPDATES</code>参数，或在INSERT、UPDATE、DELETE语句中指定<code>LOW_PRIORITY</code>选项来调节读写锁的争用</li>
+<li>由于表锁的锁定粒度大，读写之间又是串行的，因此，如果更新操作较多，MyISAM表可能会出现严重的锁等待，可以考虑采用InnoDB表来减少锁冲突</li>
+</ol>
+<p>对于InnoDB表锁：</p>
+<ol>
+<li>InnoDB行锁是基于索引实现的，如果不通过索引访问数据，InnoDB会使用表锁</li>
+<li>在不同的隔离级别下，InnoDB的锁机制和一致性读策略不同</li>
+</ol>
+<p>用户可以通过设计和SQL调整等措施减少锁冲突和死锁：</p>
+<ul>
+<li>尽量使用较低的隔离级别： 精心设计索引并尽量使用索引访问数据，使加锁更加准确，从而减少锁冲突的机会</li>
+<li>选择合理的事务大小，小失误发生锁冲突的几率也更小</li>
+<li>给记录集显式加锁时，最好一次性请求足够级别的锁。比如要修改数据的话，最好直接申请排他锁，而不是先申请共享锁，修改时在请求排他锁，这样容易产生死锁</li>
+<li>不同的程序访问同一组表时，应尽量约定相同的顺序访问各表，对一个表而言尽可能以固定的顺序存取表中的行，这样可以大大减少死锁的机会</li>
+<li>尽量使用相等条件范文数据，这样可以避免间隙锁对并发插入的影响；不要申请超过实际需要的锁级别；除非必须，查询时不要显示加锁；</li>
+<li>对于一些特定的事务，可以使用表锁来提高处理速度或减少死锁的可能</li>
+</ul>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
@@ -438,7 +507,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL"><span class="toc-number">1.</span> <span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础知识"><span class="toc-number">1.1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#局部性原理"><span class="toc-number">1.1.1.</span> <span class="toc-text">局部性原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘预读"><span class="toc-number">1.1.2.</span> <span class="toc-text">磁盘预读</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL索引"><span class="toc-number">1.2.</span> <span class="toc-text">MySQL索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引的分类"><span class="toc-number">1.2.1.</span> <span class="toc-text">索引的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引维护"><span class="toc-number">1.2.2.</span> <span class="toc-text">索引维护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL整体结构"><span class="toc-number">1.3.</span> <span class="toc-text">MySQL整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试题"><span class="toc-number">1.4.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树"><span class="toc-number">1.4.1.</span> <span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B树"><span class="toc-number">1.4.2.</span> <span class="toc-text">B树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树"><span class="toc-number">1.4.3.</span> <span class="toc-text">B+树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL存储引擎"><span class="toc-number">1.5.</span> <span class="toc-text">MySQL存储引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL架构"><span class="toc-number">1.6.</span> <span class="toc-text">MySQL架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL日志"><span class="toc-number">1.7.</span> <span class="toc-text">MySQL日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redo日志-——-InnoDB存储引擎的日志文件"><span class="toc-number">1.7.1.</span> <span class="toc-text">Redo日志 —— InnoDB存储引擎的日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Undo-log"><span class="toc-number">1.7.2.</span> <span class="toc-text">Undo log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Binlog-——-服务端的日志文件"><span class="toc-number">1.7.3.</span> <span class="toc-text">Binlog —— 服务端的日志文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL执行计划"><span class="toc-number">1.8.</span> <span class="toc-text">MySQL执行计划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行计划中包含的信息（属性）"><span class="toc-number">1.8.1.</span> <span class="toc-text">执行计划中包含的信息（属性）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的锁机制"><span class="toc-number">1.9.</span> <span class="toc-text">MySQL的锁机制</span></a></li></ol></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL"><span class="toc-number">1.</span> <span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础知识"><span class="toc-number">1.1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#局部性原理"><span class="toc-number">1.1.1.</span> <span class="toc-text">局部性原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘预读"><span class="toc-number">1.1.2.</span> <span class="toc-text">磁盘预读</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL索引"><span class="toc-number">1.2.</span> <span class="toc-text">MySQL索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引的分类"><span class="toc-number">1.2.1.</span> <span class="toc-text">索引的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引维护"><span class="toc-number">1.2.2.</span> <span class="toc-text">索引维护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL整体结构"><span class="toc-number">1.3.</span> <span class="toc-text">MySQL整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试题"><span class="toc-number">1.4.</span> <span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树"><span class="toc-number">1.4.1.</span> <span class="toc-text">二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B树"><span class="toc-number">1.4.2.</span> <span class="toc-text">B树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树"><span class="toc-number">1.4.3.</span> <span class="toc-text">B+树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL存储引擎"><span class="toc-number">1.5.</span> <span class="toc-text">MySQL存储引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL架构"><span class="toc-number">1.6.</span> <span class="toc-text">MySQL架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL日志"><span class="toc-number">1.7.</span> <span class="toc-text">MySQL日志</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redo日志-——-InnoDB存储引擎的日志文件"><span class="toc-number">1.7.1.</span> <span class="toc-text">Redo日志 —— InnoDB存储引擎的日志文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Undo-log"><span class="toc-number">1.7.2.</span> <span class="toc-text">Undo log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Binlog-——-服务端的日志文件"><span class="toc-number">1.7.3.</span> <span class="toc-text">Binlog —— 服务端的日志文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL执行计划"><span class="toc-number">1.8.</span> <span class="toc-text">MySQL执行计划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行计划中包含的信息（属性）"><span class="toc-number">1.8.1.</span> <span class="toc-text">执行计划中包含的信息（属性）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL的锁机制"><span class="toc-number">1.9.</span> <span class="toc-text">MySQL的锁机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM表锁"><span class="toc-number">1.9.1.</span> <span class="toc-text">MyISAM表锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MyISAM写阻塞读"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">MyISAM写阻塞读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MyISAM读阻塞写"><span class="toc-number">1.9.1.2.</span> <span class="toc-text">MyISAM读阻塞写</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#InnoDB锁"><span class="toc-number">1.9.2.</span> <span class="toc-text">InnoDB锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB行锁实现方式"><span class="toc-number">1.9.2.1.</span> <span class="toc-text">InnoDB行锁实现方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.9.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>	
         </div>
     
 </div>
